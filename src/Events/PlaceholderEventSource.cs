@@ -17,7 +17,7 @@ public class PlaceholderEventSource : IEventSource
         string Description,
         EventCategory Category,
         int ImportanceScore,
-        int Modulo);
+        int CyclePosition);
 
     private static readonly PlaceholderTemplate[] Templates =
     [
@@ -50,7 +50,7 @@ public class PlaceholderEventSource : IEventSource
         var modulo = context.TurnNumber % CycleLength;
         foreach (var template in Templates)
         {
-            if (template.Modulo != modulo)
+            if (template.CyclePosition != modulo)
             {
                 continue;
             }

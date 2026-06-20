@@ -8,6 +8,9 @@ namespace EmpiresOfHistoryV2.UI.Events;
 
 public partial class EventPopupWindow : Control
 {
+    private const string PlaceholderEffectKey = "placeholder";
+    private const string PlaceholderEffectValue = "true";
+
     public event Action? ArchiveRequested;
 
     private Label _categoryLabel = null!;
@@ -142,7 +145,7 @@ public partial class EventPopupWindow : Control
             child.QueueFree();
         }
 
-        var visibleEffects = gameEvent.Effects.Where(pair => !(pair.Key == "placeholder" && pair.Value == "true")).ToList();
+        var visibleEffects = gameEvent.Effects.Where(pair => !IsPlaceholderEffect(pair)).ToList();
         _effectsHeader.Visible = visibleEffects.Count > 0;
         _effectsRows.Visible = visibleEffects.Count > 0;
 
@@ -197,4 +200,7 @@ public partial class EventPopupWindow : Control
         EventImportance.Critical => Color.FromHtml("#e0b347"),
         _ => Color.FromHtml("#a08060")
     };
+
+    private static bool IsPlaceholderEffect(System.Collections.Generic.KeyValuePair<string, string> effect) =>
+        effect.Key == PlaceholderEffectKey && effect.Value == PlaceholderEffectValue;
 }

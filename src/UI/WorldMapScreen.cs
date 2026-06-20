@@ -180,10 +180,10 @@ public partial class WorldMapScreen : Control
         _eventFeedPanel?.RefreshFeed(GameManager.Instance.EventSystem.History);
         _eventArchiveScreen?.Refresh(GameManager.Instance.EventSystem.History);
 
-        var criticalOrMajor = events.FirstOrDefault(gameEvent => gameEvent.ImportanceScore >= MajorOrCriticalThreshold);
-        if (criticalOrMajor != null)
+        var majorOrCritical = events.FirstOrDefault(gameEvent => gameEvent.ImportanceScore >= MajorOrCriticalThreshold);
+        if (majorOrCritical != null)
         {
-            ShowEvent(criticalOrMajor);
+            ShowEvent(majorOrCritical);
         }
     }
 
