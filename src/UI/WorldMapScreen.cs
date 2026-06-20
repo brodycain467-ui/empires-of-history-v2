@@ -13,6 +13,7 @@ namespace EmpiresOfHistoryV2.UI;
 
 public partial class WorldMapScreen : Control
 {
+    private const int MajorImportanceThreshold = 51;
     private TopBar _topBar = null!;
     private NationInfoPanel _nationInfoPanel = null!;
     private WorldMapManager _worldMapManager = null!;
@@ -179,7 +180,7 @@ public partial class WorldMapScreen : Control
         _eventFeedPanel?.RefreshFeed(GameManager.Instance.EventSystem.History);
         _eventArchiveScreen?.Refresh(GameManager.Instance.EventSystem.History);
 
-        var criticalOrMajor = events.FirstOrDefault(gameEvent => gameEvent.ImportanceScore >= 51);
+        var criticalOrMajor = events.FirstOrDefault(gameEvent => gameEvent.ImportanceScore >= MajorImportanceThreshold);
         if (criticalOrMajor != null)
         {
             ShowEvent(criticalOrMajor);

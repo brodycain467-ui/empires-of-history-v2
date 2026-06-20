@@ -34,6 +34,9 @@ public class EventHistoryLog
 
     public IReadOnlyList<GameEvent> GetByCategory(EventCategory category) => _history.Where(gameEvent => gameEvent.Category == category).ToList();
 
+    /// <summary>
+    /// Returns nation-scoped events plus global events with no target nation.
+    /// </summary>
     public IReadOnlyList<GameEvent> GetByNation(string nationId) => _history.Where(gameEvent => gameEvent.TargetNationId == nationId || gameEvent.TargetNationId == null).ToList();
 
     public IReadOnlyList<GameEvent> GetByTurn(int turn) => _history.Where(gameEvent => gameEvent.TurnNumber == turn).ToList();

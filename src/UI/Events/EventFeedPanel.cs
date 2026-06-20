@@ -11,8 +11,6 @@ public partial class EventFeedPanel : PanelContainer
     public event Action<GameEvent>? EventSelected;
 
     private VBoxContainer _rows = null!;
-    private Label _emptyLabel = null!;
-
     public override void _Ready()
     {
         Theme = EmpiresDarkTheme.Create();
@@ -46,11 +44,6 @@ public partial class EventFeedPanel : PanelContainer
         _rows.AddThemeConstantOverride("separation", 6);
         scroll.AddChild(_rows);
 
-        _emptyLabel = new Label
-        {
-            Text = "No events yet.",
-            Modulate = Color.FromHtml("#a08060")
-        };
     }
 
     public void RefreshFeed(EventHistoryLog history)
@@ -68,7 +61,7 @@ public partial class EventFeedPanel : PanelContainer
         var events = history.All.Take(5).ToList();
         if (events.Count == 0)
         {
-            _rows.AddChild(_emptyLabel.Duplicate() as Label ?? new Label { Text = _emptyLabel.Text });
+            _rows.AddChild(CreateEmptyStateLabel());
             return;
         }
 
@@ -163,6 +156,13 @@ public partial class EventFeedPanel : PanelContainer
         EventImportance.Minor => Color.FromHtml("#a08060"),
         EventImportance.Moderate => Color.FromHtml("#f0e6cc"),
         EventImportance.Major => Color.FromHtml("#c9a84c"),
-        _ => Color.FromHtml("#c9a84c")
+        EventImportance.Critical => Color.FromHtml("#c9a84c"),
+        _ => Color.FromHtml("#a08060")
+    };
+
+    private static Label CreateEmptyStateLabel() => new()
+    {
+        Text = "No events yet.",
+        Modulate = Color.FromHtml("#a08060")
     };
 }

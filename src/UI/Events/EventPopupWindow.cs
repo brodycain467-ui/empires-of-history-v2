@@ -194,6 +194,7 @@ public partial class EventPopupWindow : Control
         EventImportance.Minor => Color.FromHtml("#a08060"),
         EventImportance.Moderate => Color.FromHtml("#f0e6cc"),
         EventImportance.Major => Color.FromHtml("#c9a84c"),
-        _ => Color.FromHtml("#e0b347")
+        EventImportance.Critical => Color.FromHtml("#e0b347"),
+        _ => Color.FromHtml("#a08060")
     };
 }
