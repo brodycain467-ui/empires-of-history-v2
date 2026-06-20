@@ -59,7 +59,7 @@ public partial class MainMenuScreen : Control
         }
 
         var slots = _saveSystem.GetAllSaveSlots();
-        _continueBtn.Disabled = slots.FirstOrDefault() == null;
+        _continueBtn.Disabled = !slots.Any(s => s != null);
 
         var hasAny = false;
         for (var i = 0; i < slots.Count; i++)
@@ -125,9 +125,18 @@ public partial class MainMenuScreen : Control
 
     private void ContinueGame()
     {
-        if (_saveSystem.Load(1) != null)
+        // Find first populated slot (slots are 1-indexed, list is 0-indexed)
+        var slots = _saveSystem.GetAllSaveSlots();
+        for (var i = 0; i < slots.Count; i++)
         {
-            SceneRouter.Instance.GoToWorldMap();
+            if (slots[i] != null)
+            {
+                if (_saveSystem.Load(i + 1) != null)
+                {
+                    SceneRouter.Instance.GoToWorldMap();
+                }
+                return;
+            }
         }
     }
 
