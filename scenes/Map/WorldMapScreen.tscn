@@ -1,0 +1,405 @@
+; WorldMapScreen.tscn — Main world map scene for Empires of History V2
+; Matches the approved dark/gold layout from docs/ui/approved/README.md
+;
+; Layout overview:
+;   WorldMapScreen (Control, full viewport)  ← WorldMapScreenController.cs
+;   ├── TopBar        (Panel, full-width, 48 px)
+;   ├── CenterArea    (HBoxContainer, fills remaining height)
+;   │   ├── MapContainer    (SubViewportContainer, expands horizontally)
+;   │   │   └── SubViewport → MapRoot (Node2D)  ← WorldMapManager.cs
+;   │   │       ├── OceanBackground (ColorRect)
+;   │   │       └── ProvinceLayer   (Node2D)
+;   │   └── NationInfoPanel (Panel, 280 px wide)
+;   └── BottomTabBar  (Panel, full-width, 60 px)
+
+[gd_scene load_steps=4 format=3 uid="uid://empires_worldmap_v2"]
+
+[ext_resource type="Script" path="res://src/UI/WorldMapScreenController.cs" id="1_ctrl"]
+[ext_resource type="Script" path="res://src/Map/WorldMapManager.cs"          id="2_map"]
+
+; ── Shared StyleBoxes ────────────────────────────────────────────────────────
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.165, 0.122, 0.055, 1)
+border_color = Color(0.788, 0.659, 0.298, 0.35)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_width_left = 1
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+; ════════════════════════════════════════════════════════════════════════════
+; ROOT
+; ════════════════════════════════════════════════════════════════════════════
+
+[node name="WorldMapScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+layout_mode = 3
+anchors_preset = 15
+script = ExtResource("1_ctrl")
+
+; ── VBox wrapping the three horizontal bands ──────────────────────────────
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_right = 0.0
+offset_bottom = 0.0
+
+; ════════════════════════════════════════════════════════════════════════════
+; TOP BAR  (#1a1208 bg, full width, 48 px)
+; ════════════════════════════════════════════════════════════════════════════
+
+[node name="TopBar" type="Panel" parent="MainLayout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TopBarLayout" type="HBoxContainer" parent="MainLayout/TopBar"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+; Nation flag — placeholder TextureRect (flag loaded via FlagPath in future)
+[node name="NationFlag" type="TextureRect" parent="MainLayout/TopBar/TopBarLayout"]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 28)
+stretch_mode = 5
+
+; Nation name (gold, bold)
+[node name="NationNameLabel" type="Label" parent="MainLayout/TopBar/TopBarLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SELECT A NATION"
+theme_override_colors/font_color = Color(0.788, 0.659, 0.298, 1)
+theme_override_font_sizes/font_size = 16
+
+; Resource strip (treasury, pop, GDP, military — all placeholders for Phase 3+)
+[node name="ResourceStrip" type="HBoxContainer" parent="MainLayout/TopBar/TopBarLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="TreasuryDisplay" type="Label" parent="MainLayout/TopBar/TopBarLayout/ResourceStrip"]
+layout_mode = 2
+text = "⚙ Treasury: —"
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="PopulationDisplay" type="Label" parent="MainLayout/TopBar/TopBarLayout/ResourceStrip"]
+layout_mode = 2
+text = "👥 Population: —"
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="GDPDisplay" type="Label" parent="MainLayout/TopBar/TopBarLayout/ResourceStrip"]
+layout_mode = 2
+text = "📈 GDP: —"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="MilitaryDisplay" type="Label" parent="MainLayout/TopBar/TopBarLayout/ResourceStrip"]
+layout_mode = 2
+text = "⚔ Military: —"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 13
+
+; Date / turn counter (right-aligned)
+[node name="DateTurnDisplay" type="Label" parent="MainLayout/TopBar/TopBarLayout"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "TURN 1 — Jan 1, 2024"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 13
+
+; ════════════════════════════════════════════════════════════════════════════
+; CENTER AREA  (map + right sidebar, fills all remaining space)
+; ════════════════════════════════════════════════════════════════════════════
+
+[node name="CenterArea" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+; ── Map Container (SubViewport) ──────────────────────────────────────────
+
+[node name="MapContainer" type="SubViewportContainer" parent="MainLayout/CenterArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MainLayout/CenterArea/MapContainer"]
+size = Vector2i(1640, 972)
+render_target_update_mode = 4
+
+; MapRoot — WorldMapManager script lives here
+[node name="MapRoot" type="Node2D" parent="MainLayout/CenterArea/MapContainer/SubViewport"]
+script = ExtResource("2_map")
+
+; Ocean background (#0d1b2a dark navy)
+[node name="OceanBackground" type="ColorRect" parent="MainLayout/CenterArea/MapContainer/SubViewport/MapRoot"]
+color = Color(0.051, 0.106, 0.165, 1)
+offset_right = 1640.0
+offset_bottom = 972.0
+
+; Province visuals are spawned here at runtime by WorldMapManager
+[node name="ProvinceLayer" type="Node2D" parent="MainLayout/CenterArea/MapContainer/SubViewport/MapRoot"]
+
+; ── Nation Info Panel (right sidebar, 280 px) ────────────────────────────
+
+[node name="NationInfoPanel" type="Panel" parent="MainLayout/CenterArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="PanelVBox" type="VBoxContainer" parent="MainLayout/CenterArea/NationInfoPanel"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+; "NATION DETAILS" header (gold, uppercase)
+[node name="PanelHeader" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "NATION DETAILS"
+theme_override_colors/font_color = Color(0.788, 0.659, 0.298, 1)
+theme_override_font_sizes/font_size = 12
+uppercase = true
+
+; Nation flag placeholder
+[node name="NationFlagRect" type="TextureRect" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 40)
+expand_mode = 1
+stretch_mode = 5
+
+; Nation name (large gold)
+[node name="NationNameLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+text = ""
+theme_override_colors/font_color = Color(0.788, 0.659, 0.298, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+; Tier label (muted tan — e.g. "Great Power")
+[node name="NationTierLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+text = ""
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="HSeparator" type="HSeparator" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+
+; Stats grid (2 columns: label | value)
+[node name="StatsGrid" type="GridContainer" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="GovernmentLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+text = "Government"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="GovernmentValueLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "—"
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="PopulationLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+text = "Population"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="PopulationValueLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "—"
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="TreasuryLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+text = "Treasury"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="TreasuryValueLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "—"
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+
+; PLACEHOLDER: Historical accuracy (hard-coded seed value — real engine pending)
+[node name="AccuracyLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+text = "Hist. Accuracy"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 1)
+theme_override_font_sizes/font_size = 12
+tooltip_text = "PLACEHOLDER: Calculated by the Historical Accuracy Engine in a future phase."
+
+[node name="AccuracyValueLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "—"
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="HSeparator2" type="HSeparator" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+
+; "TOP OFFICIALS" header — PLACEHOLDER section
+[node name="OfficialsHeader" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+text = "TOP OFFICIALS"
+theme_override_colors/font_color = Color(0.788, 0.659, 0.298, 1)
+theme_override_font_sizes/font_size = 11
+uppercase = true
+tooltip_text = "PLACEHOLDER: Populated from the official roster system in a future phase."
+
+; PLACEHOLDER: Officials — real data from official roster system (future phase)
+[node name="Official1Label" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+text = ""
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="Official2Label" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+text = ""
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="Official3Label" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+text = ""
+theme_override_colors/font_color = Color(0.941, 0.902, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+; Empty state message — shown until a nation is selected
+[node name="EmptyStateLabel" type="Label" parent="MainLayout/CenterArea/NationInfoPanel/PanelVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Select a nation"
+theme_override_colors/font_color = Color(0.627, 0.502, 0.376, 0.7)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+; ════════════════════════════════════════════════════════════════════════════
+; BOTTOM TAB BAR  (full-width, 60 px, icon+label tab buttons)
+; ════════════════════════════════════════════════════════════════════════════
+
+[node name="BottomTabBar" type="Panel" parent="MainLayout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TabButtons" type="HBoxContainer" parent="MainLayout/BottomTabBar"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+offset_left = -540.0
+offset_right = 540.0
+theme_override_constants/separation = 4
+
+[node name="GovernmentTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+size_flags_horizontal = 3
+text = "GOVERNMENT"
+theme_override_font_sizes/font_size = 11
+
+[node name="EconomyTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(90, 0)
+size_flags_horizontal = 3
+text = "ECONOMY"
+theme_override_font_sizes/font_size = 11
+
+[node name="MilitaryTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(90, 0)
+size_flags_horizontal = 3
+text = "MILITARY"
+theme_override_font_sizes/font_size = 11
+
+[node name="DiplomacyTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+size_flags_horizontal = 3
+text = "DIPLOMACY"
+theme_override_font_sizes/font_size = 11
+
+[node name="TechnologyTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+size_flags_horizontal = 3
+text = "TECHNOLOGY"
+theme_override_font_sizes/font_size = 11
+
+; Religion tab — PLACEHOLDER, grayed out, non-functional (per Phase 2 constraints)
+[node name="ReligionTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(90, 0)
+size_flags_horizontal = 3
+text = "RELIGION"
+disabled = true
+theme_override_font_sizes/font_size = 11
+tooltip_text = "Religion — not yet implemented"
+
+[node name="IntelligenceTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(110, 0)
+size_flags_horizontal = 3
+text = "INTELLIGENCE"
+theme_override_font_sizes/font_size = 11
+
+[node name="GIATabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 0)
+size_flags_horizontal = 3
+text = "GIA"
+theme_override_font_sizes/font_size = 11
+
+[node name="MapModesTabBtn" type="Button" parent="MainLayout/BottomTabBar/TabButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+size_flags_horizontal = 3
+text = "MAP MODES"
+theme_override_font_sizes/font_size = 11
