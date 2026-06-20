@@ -1,0 +1,216 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/UI/MainMenuScreen.cs" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/UI/SaveLoadDialog.tscn" id="2_dialog"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.0705882, 0.0313726, 1)
+
+[node name="BackgroundGradient" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.164706, 0.121569, 0.054902, 0.25)
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="RootVBox" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="TitleBlock" type="VBoxContainer" parent="RootMargin/RootVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="EmpiresLabel" type="Label" parent="RootMargin/RootVBox/TitleBlock"]
+layout_mode = 2
+text = "EMPIRES"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+
+[node name="OfLabel" type="Label" parent="RootMargin/RootVBox/TitleBlock"]
+layout_mode = 2
+text = "OF"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+
+[node name="HistoryLabel" type="Label" parent="RootMargin/RootVBox/TitleBlock"]
+layout_mode = 2
+text = "HISTORY"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+
+[node name="SubtitleLabel" type="Label" parent="RootMargin/RootVBox/TitleBlock"]
+layout_mode = 2
+text = "8300 BC — 2100 AD"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.627451, 0.501961, 0.376471, 1)
+
+[node name="ContentRow" type="HBoxContainer" parent="RootMargin/RootVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="LeftNav" type="PanelContainer" parent="RootMargin/RootVBox/ContentRow"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="NavMargin" type="MarginContainer" parent="RootMargin/RootVBox/ContentRow/LeftNav"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NavButtons" type="VBoxContainer" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ContinueBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons" unique_name_in_owner=true]
+layout_mode = 2
+text = "▶  CONTINUE"
+
+[node name="LoadGameBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons" unique_name_in_owner=true]
+layout_mode = 2
+text = "📂  LOAD GAME"
+
+[node name="NewGameBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons" unique_name_in_owner=true]
+layout_mode = 2
+text = "✚  NEW GAME"
+
+[node name="ScenariosBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons"]
+layout_mode = 2
+text = "🗺  SCENARIOS"
+disabled = true
+
+[node name="MultiplayerBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons"]
+layout_mode = 2
+text = "👥  MULTIPLAYER (Coming Soon)"
+disabled = true
+
+[node name="HSeparator" type="HSeparator" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons"]
+layout_mode = 2
+
+[node name="SettingsBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons"]
+layout_mode = 2
+text = "⚙  SETTINGS"
+disabled = true
+
+[node name="CreditsBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons"]
+layout_mode = 2
+text = "ℹ  CREDITS"
+disabled = true
+
+[node name="ExitBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/LeftNav/NavMargin/NavButtons" unique_name_in_owner=true]
+layout_mode = 2
+text = "✕  EXIT"
+
+[node name="RecentSavesPanel" type="PanelContainer" parent="RootMargin/RootVBox/ContentRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RecentMargin" type="MarginContainer" parent="RootMargin/RootVBox/ContentRow/RecentSavesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RecentVBox" type="VBoxContainer" parent="RootMargin/RootVBox/ContentRow/RecentSavesPanel/RecentMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="RecentHeader" type="Label" parent="RootMargin/RootVBox/ContentRow/RecentSavesPanel/RecentMargin/RecentVBox"]
+layout_mode = 2
+text = "RECENT SAVES"
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+
+[node name="SavesList" type="VBoxContainer" parent="RootMargin/RootVBox/ContentRow/RecentSavesPanel/RecentMargin/RecentVBox" unique_name_in_owner=true]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="QuickStartPanel" type="PanelContainer" parent="RootMargin/RootVBox/ContentRow"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="QuickMargin" type="MarginContainer" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="QuickVBox" type="VBoxContainer" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="QuickHeader" type="Label" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox"]
+layout_mode = 2
+text = "QUICK START"
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+
+[node name="StartDateLabel" type="Label" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox"]
+layout_mode = 2
+text = "START DATE"
+
+[node name="StartDateValueLabel" type="Label" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox"]
+layout_mode = 2
+text = "2011 AD"
+theme_override_colors/font_color = Color(0.627451, 0.501961, 0.376471, 1)
+
+[node name="NationLabel" type="Label" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox"]
+layout_mode = 2
+text = "NATION"
+
+[node name="NationDropdown" type="OptionButton" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox" unique_name_in_owner=true]
+layout_mode = 2
+
+[node name="DifficultyLabel" type="Label" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox"]
+layout_mode = 2
+text = "GAME DIFFICULTY"
+
+[node name="DifficultyDropdown" type="OptionButton" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox"]
+layout_mode = 2
+
+[node name="StartGameBtn" type="Button" parent="RootMargin/RootVBox/ContentRow/QuickStartPanel/QuickMargin/QuickVBox" unique_name_in_owner=true]
+layout_mode = 2
+text = "START GAME"
+
+[node name="VersionLabel" type="Label" parent="RootMargin/RootVBox"]
+layout_mode = 2
+text = "v0.1.0"
+theme_override_colors/font_color = Color(0.627451, 0.501961, 0.376471, 1)
+
+[node name="SaveLoadDialog" parent="." instance=ExtResource("2_dialog")]
+unique_name_in_owner = true
