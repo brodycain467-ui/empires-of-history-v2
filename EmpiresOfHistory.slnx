@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EmpiresOfHistory.Map.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EmpiresOfHistory.Map.Tests.csproj" />
+  </Folder>
+</Solution>
