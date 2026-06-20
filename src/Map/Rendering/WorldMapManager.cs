@@ -42,7 +42,7 @@ public partial class WorldMapManager : Node2D
         }
 
         _culler.Initialize(_mapCamera, _provinceDataById.Values, EnsureVisible, EnsureHidden);
-        _lodManager.Initialize(_mapCamera, _activeVisuals.Values);
+        _lodManager.Initialize(_mapCamera, () => _activeVisuals.Values);
 
         if (GameManager.Instance.GameState.SelectedNationId is { } nationId)
         {

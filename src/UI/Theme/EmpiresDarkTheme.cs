@@ -32,7 +32,7 @@ public static class EmpiresDarkTheme
 
         var separator = new StyleBoxLine
         {
-            Color = Color.FromHtml("#4dc9a84c"),
+            Color = Color.FromHtml("#c9a84c4d"),
             Thickness = 1
         };
 

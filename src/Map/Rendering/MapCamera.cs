@@ -14,6 +14,7 @@ public partial class MapCamera : Node2D
     private const float MaxZoom = 6.0f;
 
     private Camera2D _camera = null!;
+    private Tween? _focusTween;
     private bool _isDragging;
     private Vector2 _lastPointerPosition;
 
@@ -68,14 +69,17 @@ public partial class MapCamera : Node2D
     public void FocusOn(Vector2 worldPos, float zoom)
     {
         var targetZoom = Mathf.Clamp(zoom, MinZoom, MaxZoom);
-        var tween = CreateTween();
-        tween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-        tween.TweenProperty(_camera, "position", worldPos, 0.35f);
-        tween.Parallel().TweenProperty(_camera, "zoom", new Vector2(targetZoom, targetZoom), 0.35f);
-        tween.Finished += () =>
+        _focusTween?.Kill();
+
+        _focusTween = CreateTween();
+        _focusTween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+        _focusTween.TweenProperty(_camera, "position", worldPos, 0.35f);
+        _focusTween.Parallel().TweenProperty(_camera, "zoom", new Vector2(targetZoom, targetZoom), 0.35f);
+        _focusTween.Finished += () =>
         {
             ClampCamera();
             EmitSignal(SignalName.ZoomChanged, _camera.Zoom.X);
+            _focusTween = null;
         };
     }
 

@@ -131,7 +131,9 @@ public partial class NationInfoPanel : PanelContainer
         var parts = value.Replace('_', ' ').Split(' ', StringSplitOptions.RemoveEmptyEntries);
         for (var i = 0; i < parts.Length; i++)
         {
-            parts[i] = char.ToUpperInvariant(parts[i][0]) + parts[i][1..];
+            parts[i] = parts[i].Length == 1
+                ? char.ToUpperInvariant(parts[i][0]).ToString()
+                : char.ToUpperInvariant(parts[i][0]) + parts[i][1..];
         }
 
         return string.Join(' ', parts);

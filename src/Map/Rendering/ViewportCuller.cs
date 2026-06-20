@@ -10,6 +10,7 @@ public partial class ViewportCuller : Node
     private readonly Dictionary<string, ProvinceData> _provincesById = new();
     private Action<string>? _showProvince;
     private Action<string>? _hideProvince;
+    private MapCamera? _camera;
 
     public void Initialize(
         MapCamera camera,
@@ -17,6 +18,12 @@ public partial class ViewportCuller : Node
         Action<string> showProvince,
         Action<string> hideProvince)
     {
+        if (_camera != null)
+        {
+            _camera.ViewportChanged -= OnViewportChanged;
+        }
+
+        _camera = camera;
         _provincesById.Clear();
         foreach (var province in provinces)
         {
@@ -25,7 +32,7 @@ public partial class ViewportCuller : Node
 
         _showProvince = showProvince;
         _hideProvince = hideProvince;
-        camera.ViewportChanged += OnViewportChanged;
+        _camera.ViewportChanged += OnViewportChanged;
     }
 
     private void OnViewportChanged(Rect2 viewport)
