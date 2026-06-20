@@ -219,7 +219,8 @@ public class ProvinceOwnershipSystemTests
         var history = system.History.GetHistory("prov_1");
 
         Assert.Equal(2, history.Count);
-        Assert.True(history[0].TurnNumber < history[1].TurnNumber);
+        Assert.Equal(2, history[0].TurnNumber);
+        Assert.Equal(3, history[1].TurnNumber);
     }
 
     [Fact]
