@@ -1,5 +1,6 @@
 using Godot;
 using System.Linq;
+using EmpiresOfHistoryV2.Events;
 using EmpiresOfHistoryV2.Map.Systems;
 
 namespace EmpiresOfHistoryV2.Core;
@@ -13,6 +14,7 @@ public partial class GameManager : Node
     public OwnershipSystem OwnershipSystem { get; private set; } = new();
     public NationColorRegistry NationColorRegistry { get; private set; } = new();
     public BorderHistorySystem BorderHistorySystem { get; private set; } = new();
+    public EventSystem EventSystem { get; private set; } = new();
 
     public override void _Ready()
     {
@@ -26,6 +28,7 @@ public partial class GameManager : Node
         OwnershipSystem.Initialize(provinces.ToList());
         NationColorRegistry.Initialize(nations.ToList());
         BorderHistorySystem.Load();
+        EventSystem.RegisterSource(new PlaceholderEventSource());
     }
 
     public void NewGame(string nationId)

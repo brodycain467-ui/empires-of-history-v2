@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://world_map_screen"]
+[gd_scene load_steps=10 format=3 uid="uid://world_map_screen"]
 
 [ext_resource type="Script" path="res://src/UI/WorldMapScreen.cs" id="1_wms"]
 [ext_resource type="Script" path="res://src/UI/TopBar.cs" id="2_top"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://src/UI/BottomTabBar.cs" id="4_btb"]
 [ext_resource type="Script" path="res://src/Map/Rendering/MapCamera.cs" id="5_cam"]
 [ext_resource type="Script" path="res://src/Map/Rendering/WorldMapManager.cs" id="6_wmm"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventFeedPanel.tscn" id="7_efp"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventPopupWindow.tscn" id="8_epw"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventArchiveScreen.tscn" id="9_eas"]
 
 [node name="WorldMapScreen" type="Control"]
 layout_mode = 3
@@ -63,3 +66,12 @@ script = ExtResource("3_nip")
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 script = ExtResource("4_btb")
+
+[node name="EventFeedPanel" parent="." instance=ExtResource("7_efp")]
+unique_name_in_owner = true
+
+[node name="EventPopupWindow" parent="." instance=ExtResource("8_epw")]
+unique_name_in_owner = true
+
+[node name="EventArchiveScreen" parent="." instance=ExtResource("9_eas")]
+unique_name_in_owner = true
