@@ -9,6 +9,8 @@ namespace EmpiresOfHistoryV2.Events;
 /// </summary>
 public class PlaceholderEventSource : IEventSource
 {
+    private const int CycleLength = 20;
+
     private sealed record PlaceholderTemplate(
         string EventId,
         string Title,
@@ -45,7 +47,7 @@ public class PlaceholderEventSource : IEventSource
 
     public IReadOnlyList<GameEvent> GenerateEvents(EventContext context)
     {
-        var modulo = context.TurnNumber % Templates.Length;
+        var modulo = context.TurnNumber % CycleLength;
         foreach (var template in Templates)
         {
             if (template.Modulo != modulo)

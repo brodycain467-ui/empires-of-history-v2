@@ -156,7 +156,7 @@ public partial class EventFeedPanel : PanelContainer
         EventImportance.Minor => Color.FromHtml("#a08060"),
         EventImportance.Moderate => Color.FromHtml("#f0e6cc"),
         EventImportance.Major => Color.FromHtml("#c9a84c"),
-        EventImportance.Critical => Color.FromHtml("#c9a84c"),
+        EventImportance.Critical => Color.FromHtml("#e0b347"),
         _ => Color.FromHtml("#a08060")
     };
 

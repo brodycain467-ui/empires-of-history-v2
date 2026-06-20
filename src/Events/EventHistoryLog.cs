@@ -9,18 +9,18 @@ namespace EmpiresOfHistoryV2.Events;
 /// </summary>
 public class EventHistoryLog
 {
-    private readonly List<GameEvent> _history = [];
+    private readonly LinkedList<GameEvent> _history = [];
     private const int MaxHistory = 1000;
 
-    public IReadOnlyList<GameEvent> All => _history;
+    public IReadOnlyList<GameEvent> All => _history.ToList();
     public int Count => _history.Count;
 
     public void Record(GameEvent gameEvent)
     {
-        _history.Insert(0, gameEvent);
+        _history.AddFirst(gameEvent);
         if (_history.Count > MaxHistory)
         {
-            _history.RemoveAt(_history.Count - 1);
+            _history.RemoveLast();
         }
     }
 
