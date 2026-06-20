@@ -8,6 +8,10 @@ namespace EmpiresOfHistory.Map.Data
     /// All values (population, treasury, officials, historical accuracy) are approximate
     /// real-world figures used for prototyping only. They will be replaced by the
     /// Content Database and Historical Accuracy Engine in future phases.
+    ///
+    /// SNAPSHOT DATE: Officials and statistics reflect publicly available data as of
+    /// approximately early 2024. Government positions change over time; treat these
+    /// values as illustrative stand-ins, not live data.
     /// </summary>
     public static class SeedNations
     {

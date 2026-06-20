@@ -148,7 +148,7 @@ namespace EmpiresOfHistory.Map.Data
                     OwnerId = "DEU",
                     CoreOwnerId = "DEU",
                     MapPosition = new Vector2(915, 305),
-                    NeighborIds = new List<string> { "berlin", "paris" },
+                    NeighborIds = new List<string> { "berlin", "paris", "lyon" },
                     Type = ProvinceType.Land,
                     IsCapital = false,
                     RegionId = "western_europe"
