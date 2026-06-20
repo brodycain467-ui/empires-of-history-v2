@@ -1,0 +1,12 @@
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/bin/Debug/net8.0/EmpiresOfHistory.Map.deps.json
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/bin/Debug/net8.0/EmpiresOfHistory.Map.dll
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/bin/Debug/net8.0/EmpiresOfHistory.Map.pdb
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.AssemblyInfoInputs.cache
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.AssemblyInfo.cs
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.csproj.CoreCompileInputs.cache
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.sourcelink.json
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.dll
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/refint/EmpiresOfHistory.Map.dll
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/EmpiresOfHistory.Map.pdb
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/obj/Debug/net8.0/ref/EmpiresOfHistory.Map.dll
