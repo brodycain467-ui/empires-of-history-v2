@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "holy_site_id": "",
+      "display_name": "",
+      "religion_id": "",
+      "province_id": "",
+      "county_id": "",
+      "city_id": "",
+      "importance_score": 0,
+      "pilgrimage_value": 0,
+      "asset_path": ""
+    }
+  ]
+}

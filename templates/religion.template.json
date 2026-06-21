@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "religion_id": "",
+      "display_name": "",
+      "description": "",
+      "holy_site_ids": [],
+      "doctrine_ids": [],
+      "piety_modifier": 0,
+      "is_state_religion": false,
+      "icon_asset": ""
+    }
+  ]
+}
