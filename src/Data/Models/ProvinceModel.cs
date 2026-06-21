@@ -9,14 +9,14 @@ namespace EmpiresOfHistory.Data.Models
     /// </summary>
     public class ProvinceModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         
         // Geographical data
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public string Terrain { get; set; }
+        public string Terrain { get; set; } = string.Empty;
         public float Area { get; set; }
         
         // Population and development
@@ -24,48 +24,43 @@ namespace EmpiresOfHistory.Data.Models
         public float DevelopmentLevel { get; set; }
         
         // Ownership
-        public string OwnerId { get; set; } // Nation ID or null if unowned
+        public string? OwnerId { get; set; } // Nation ID or null if unowned
         public DateTime LastOwnershipChange { get; set; }
         
         // Cultural and religious composition
-        public List<CulturalComposition> Cultures { get; set; }
-        public List<ReligiousComposition> Religions { get; set; }
+        public List<CulturalComposition> Cultures { get; set; } = new();
+        public List<ReligiousComposition> Religions { get; set; } = new();
         
         // Resources
-        public List<ResourceAmount> Resources { get; set; }
+        public List<ResourceAmount> Resources { get; set; } = new();
         
         // Relationships
-        public List<string> NeighboringProvinces { get; set; }
+        public List<string> NeighboringProvinces { get; set; } = new();
         
         // Metadata
-        public Dictionary<string, object> Metadata { get; set; }
+        public Dictionary<string, object> Metadata { get; set; } = new();
 
         public ProvinceModel()
         {
-            Cultures = new List<CulturalComposition>();
-            Religions = new List<ReligiousComposition>();
-            Resources = new List<ResourceAmount>();
-            NeighboringProvinces = new List<string>();
-            Metadata = new Dictionary<string, object>();
         }
     }
 
     public class CulturalComposition
     {
-        public string CultureId { get; set; }
+        public string CultureId { get; set; } = string.Empty;
         public float Percentage { get; set; }
     }
 
     public class ReligiousComposition
     {
-        public string ReligionId { get; set; }
+        public string ReligionId { get; set; } = string.Empty;
         public float Percentage { get; set; }
     }
 
     public class ResourceAmount
     {
-        public string ResourceId { get; set; }
-        public string ResourceType { get; set; }
+        public string ResourceId { get; set; } = string.Empty;
+        public string ResourceType { get; set; } = string.Empty;
         public int Quantity { get; set; }
     }
 

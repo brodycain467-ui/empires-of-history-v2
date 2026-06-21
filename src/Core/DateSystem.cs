@@ -92,6 +92,9 @@ namespace EmpiresOfHistory.Core
         /// </summary>
         public string GetFormattedDate()
         {
+            if (_month < MIN_MONTH || _month > MAX_MONTH)
+                throw new InvalidOperationException($"Month must be between {MIN_MONTH} and {MAX_MONTH}");
+
             string yearStr = _year > 0 
                 ? $"{_year} AD" 
                 : $"{Math.Abs(_year)} BC";

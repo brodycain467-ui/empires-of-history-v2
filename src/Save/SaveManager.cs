@@ -23,12 +23,12 @@ namespace EmpiresOfHistory.Save
 
     public class SaveInfo
     {
-        public string SaveId { get; set; }
-        public string SaveName { get; set; }
+        public string SaveId { get; set; } = string.Empty;
+        public string SaveName { get; set; } = string.Empty;
         public DateTime SaveTime { get; set; }
         public int Turn { get; set; }
         public int Year { get; set; }
-        public string PlayerNation { get; set; }
+        public string PlayerNation { get; set; } = string.Empty;
         public long FileSizeBytes { get; set; }
     }
 
@@ -70,11 +70,11 @@ namespace EmpiresOfHistory.Save
                 string json = JsonSerializer.Serialize(saveData, _jsonOptions);
                 await File.WriteAllTextAsync(filePath, json);
                 
-                GD.Print($"Game saved: {saveName} (ID: {saveData.SaveId})");
+                Console.WriteLine($"Game saved: {saveName} (ID: {saveData.SaveId})");
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"Failed to save game: {ex.Message}");
+                Console.Error.WriteLine($"Failed to save game: {ex.Message}");
                 throw new SaveException($"Failed to save game: {ex.Message}", ex);
             }
         }
@@ -95,14 +95,15 @@ namespace EmpiresOfHistory.Save
                 }
                 
                 string json = await File.ReadAllTextAsync(filePath);
-                SaveData saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions);
+                SaveData saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions)
+                    ?? throw new InvalidOperationException($"Failed to deserialize save file: {saveId}");
                 
-                GD.Print($"Game loaded: {saveData.SaveName}");
+                Console.WriteLine($"Game loaded: {saveData.SaveName}");
                 return saveData;
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"Failed to load game: {ex.Message}");
+                Console.Error.WriteLine($"Failed to load game: {ex.Message}");
                 throw new SaveException($"Failed to load game: {ex.Message}", ex);
             }
         }
@@ -120,14 +121,14 @@ namespace EmpiresOfHistory.Save
                 if (File.Exists(filePath))
                 {
                     File.Delete(filePath);
-                    GD.Print($"Save deleted: {saveId}");
+                    Console.WriteLine($"Save deleted: {saveId}");
                 }
                 
                 await Task.CompletedTask;
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"Failed to delete save: {ex.Message}");
+                Console.Error.WriteLine($"Failed to delete save: {ex.Message}");
                 throw new SaveException($"Failed to delete save: {ex.Message}", ex);
             }
         }
@@ -148,7 +149,8 @@ namespace EmpiresOfHistory.Save
                     try
                     {
                         string json = await File.ReadAllTextAsync(filePath);
-                        SaveData saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions);
+                        SaveData? saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions);
+                        if (saveData is null) continue;
                         
                         var info = new SaveInfo
                         {
@@ -165,13 +167,13 @@ namespace EmpiresOfHistory.Save
                     }
                     catch (Exception ex)
                     {
-                        GD.PrintErr($"Failed to load save info from {filePath}: {ex.Message}");
+                        Console.Error.WriteLine($"Failed to load save info from {filePath}: {ex.Message}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"Failed to get saves list: {ex.Message}");
+                Console.Error.WriteLine($"Failed to get saves list: {ex.Message}");
             }
             
             return saves.OrderByDescending(s => s.SaveTime).ToList();

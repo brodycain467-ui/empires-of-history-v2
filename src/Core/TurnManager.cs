@@ -14,8 +14,8 @@ namespace EmpiresOfHistory.Core
         int CurrentMonth { get; }
         int TurnLengthMonths { get; }
         
-        event EventHandler<TurnEventArgs> TurnAdvanced;
-        event EventHandler<YearChangeEventArgs> YearChanged;
+        event EventHandler<TurnEventArgs>? TurnAdvanced;
+        event EventHandler<YearChangeEventArgs>? YearChanged;
         
         void AdvanceTurn();
         void SetTurn(int turnNumber);
@@ -47,8 +47,8 @@ namespace EmpiresOfHistory.Core
         public int CurrentMonth => _dateSystem.Month;
         public int TurnLengthMonths => _turnLengthMonths;
         
-        public event EventHandler<TurnEventArgs> TurnAdvanced;
-        public event EventHandler<YearChangeEventArgs> YearChanged;
+        public event EventHandler<TurnEventArgs>? TurnAdvanced;
+        public event EventHandler<YearChangeEventArgs>? YearChanged;
 
         public TurnManager()
         {
