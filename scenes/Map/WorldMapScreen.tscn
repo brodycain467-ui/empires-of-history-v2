@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://world_map_screen"]
+
+[ext_resource type="Script" path="res://src/UI/WorldMapScreen.cs" id="1_wms"]
+[ext_resource type="Script" path="res://src/UI/TopBar.cs" id="2_top"]
+[ext_resource type="Script" path="res://src/UI/NationInfoPanel.cs" id="3_nip"]
+[ext_resource type="Script" path="res://src/UI/BottomTabBar.cs" id="4_btb"]
+[ext_resource type="Script" path="res://src/Map/Rendering/MapCamera.cs" id="5_cam"]
+[ext_resource type="Script" path="res://src/Map/Rendering/WorldMapManager.cs" id="6_wmm"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventFeedPanel.tscn" id="7_efp"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventPopupWindow.tscn" id="8_epw"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventArchiveScreen.tscn" id="9_eas"]
+
+[node name="WorldMapScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wms")
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="PanelContainer" parent="MainVBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+script = ExtResource("2_top")
+
+[node name="CenterSplit" type="HSplitContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 920
+
+[node name="MapContainer" type="SubViewportContainer" parent="MainVBox/CenterSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="WorldSubViewport" type="SubViewport" parent="MainVBox/CenterSplit/MapContainer"]
+size = Vector2i(1920, 1080)
+transparent_bg = false
+handle_input_locally = false
+
+[node name="WorldRoot" type="Node2D" parent="MainVBox/CenterSplit/MapContainer/WorldSubViewport"]
+
+[node name="MapCamera" type="Node2D" parent="MainVBox/CenterSplit/MapContainer/WorldSubViewport/WorldRoot"]
+script = ExtResource("5_cam")
+
+[node name="WorldMapManager" type="Node2D" parent="MainVBox/CenterSplit/MapContainer/WorldSubViewport/WorldRoot" unique_name_in_owner=true]
+script = ExtResource("6_wmm")
+
+[node name="NationInfoPanel" type="PanelContainer" parent="MainVBox/CenterSplit" unique_name_in_owner=true]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_nip")
+
+[node name="BottomTabBar" type="PanelContainer" parent="MainVBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+script = ExtResource("4_btb")
+
+[node name="EventFeedPanel" parent="." instance=ExtResource("7_efp")]
+unique_name_in_owner = true
+
+[node name="EventPopupWindow" parent="." instance=ExtResource("8_epw")]
+unique_name_in_owner = true
+
+[node name="EventArchiveScreen" parent="." instance=ExtResource("9_eas")]
+unique_name_in_owner = true

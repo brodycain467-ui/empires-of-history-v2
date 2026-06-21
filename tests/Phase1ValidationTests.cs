@@ -23,10 +23,10 @@ namespace EmpiresOfHistory.Tests
     /// </summary>
     public class Phase1ValidationTests
     {
-        private DateSystem _dateSystem;
-        private TurnManager _turnManager;
-        private SaveManager _saveManager;
-        private SaveData _testSaveData;
+        private DateSystem _dateSystem = null!;
+        private TurnManager _turnManager = null!;
+        private SaveManager _saveManager = null!;
+        private SaveData _testSaveData = null!;
 
         public Phase1ValidationTests()
         {
@@ -110,7 +110,7 @@ namespace EmpiresOfHistory.Tests
             // Assert
             Assert.Equal(4, _turnManager.CurrentTurn);
             Assert.Equal(4, turnAdvancedCount); // Event fired 4 times
-            Assert.Equal(2011, _turnManager.CurrentYear); // Still 2011
+            Assert.Equal(2012, _turnManager.CurrentYear); // Rolls into January of the next year
             Assert.Equal(1, _turnManager.CurrentMonth); // Back to January (1 + 12 months)
         }
 
@@ -363,7 +363,7 @@ namespace EmpiresOfHistory.Tests
             
             // Assert - Verify everything persisted correctly
             Assert.Equal(4, loadedData.CurrentTurn);
-            Assert.Equal(2011, loadedData.CurrentYear);
+            Assert.Equal(2012, loadedData.CurrentYear);
             Assert.Equal(1, loadedData.CurrentMonth);
             Assert.Equal(10, loadedData.Provinces.Count);
             Assert.Single(loadedData.Nations);

@@ -9,37 +9,37 @@ namespace EmpiresOfHistory.Data.Models
     /// </summary>
     public class NationModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
-        public string Description { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         
         // Visual representation
-        public string Color { get; set; }
+        public string Color { get; set; } = string.Empty;
         
         // Government
-        public string GovernmentType { get; set; }
-        public string CapitalProvinceId { get; set; }
+        public string GovernmentType { get; set; } = string.Empty;
+        public string CapitalProvinceId { get; set; } = string.Empty;
         
         // Culture and religion
-        public string PrimaryCulture { get; set; }
-        public List<string> SecondaryCultures { get; set; }
-        public string PrimaryReligion { get; set; }
-        public List<string> SecondaryReligions { get; set; }
+        public string PrimaryCulture { get; set; } = string.Empty;
+        public List<string> SecondaryCultures { get; set; } = new();
+        public string PrimaryReligion { get; set; } = string.Empty;
+        public List<string> SecondaryReligions { get; set; } = new();
         
         // Timeline
         public int FoundingYear { get; set; }
         public int? DissolutionYear { get; set; }
-        public string StatusAtPresent { get; set; }
+        public string StatusAtPresent { get; set; } = string.Empty;
         
         // Classification
-        public List<string> Tags { get; set; }
-        public string Tier { get; set; } // major_power, regional_power, minor_nation
-        public string HistoricalPeriod { get; set; }
+        public List<string> Tags { get; set; } = new();
+        public string Tier { get; set; } = string.Empty;
+        public string HistoricalPeriod { get; set; } = string.Empty;
         
         // Game settings
         public int InitialTechLevel { get; set; }
-        public string AIPersonality { get; set; }
+        public string AIPersonality { get; set; } = string.Empty;
         public float DifficultyModifier { get; set; }
         
         // State
@@ -48,14 +48,10 @@ namespace EmpiresOfHistory.Data.Models
         public DateTime UpdatedAt { get; set; }
         
         // Metadata
-        public Dictionary<string, object> Metadata { get; set; }
+        public Dictionary<string, object> Metadata { get; set; } = new();
 
         public NationModel()
         {
-            SecondaryCultures = new List<string>();
-            SecondaryReligions = new List<string>();
-            Tags = new List<string>();
-            Metadata = new Dictionary<string, object>();
             IsActive = true;
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
