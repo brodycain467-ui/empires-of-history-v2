@@ -110,7 +110,7 @@ namespace EmpiresOfHistory.Tests
             // Assert
             Assert.Equal(4, _turnManager.CurrentTurn);
             Assert.Equal(4, turnAdvancedCount); // Event fired 4 times
-            Assert.Equal(2012, _turnManager.CurrentYear); // Rolled into January of the next year
+            Assert.Equal(2012, _turnManager.CurrentYear); // Rolls into January of the next year
             Assert.Equal(1, _turnManager.CurrentMonth); // Back to January (1 + 12 months)
         }
 
