@@ -1,0 +1,6 @@
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/Debug/EmpiresOfHistoryV2.csproj.AssemblyReference.cache
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/Debug/EmpiresOfHistoryV2.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/Debug/EmpiresOfHistoryV2.AssemblyInfoInputs.cache
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/Debug/EmpiresOfHistoryV2.AssemblyInfo.cs
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/Debug/EmpiresOfHistoryV2.csproj.CoreCompileInputs.cache
+/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/Debug/EmpiresOfHistoryV2.sourcelink.json
