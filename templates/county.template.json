@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "county_id": "",
+      "display_name": "",
+      "province_id": "",
+      "city_ids": [],
+      "population": 0,
+      "dominant_culture_id": "",
+      "dominant_religion_id": "",
+      "resource_ids": []
+    }
+  ]
+}

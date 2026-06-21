@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "province_id": "",
+      "display_name": "",
+      "owner_nation_id": "",
+      "culture_ids": [],
+      "religion_ids": [],
+      "county_ids": [],
+      "population": 0,
+      "gdp": 0,
+      "stability": 0,
+      "terrain_type": "",
+      "resource_ids": []
+    }
+  ]
+}

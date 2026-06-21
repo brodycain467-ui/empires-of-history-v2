@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "technology_id": "",
+      "display_name": "",
+      "era": "",
+      "description": "",
+      "cost": 0,
+      "required_technology_ids": [],
+      "unlocks": [],
+      "category": "",
+      "icon_asset": ""
+    }
+  ]
+}

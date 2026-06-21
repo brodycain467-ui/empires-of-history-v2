@@ -5,15 +5,6 @@ using System.Text.Json;
 
 namespace EmpiresOfHistoryV2.Core;
 
-public class SaveData
-{
-    public int Slot { get; set; }
-    public string SaveName { get; set; } = string.Empty;
-    public string DateTime { get; set; } = string.Empty;
-    public string SelectedNationId { get; set; } = string.Empty;
-    public int CurrentTurn { get; set; }
-    public string GameDate { get; set; } = string.Empty;
-}
 
 public class SaveSystem
 {

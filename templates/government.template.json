@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "government_id": "",
+      "display_name": "",
+      "type": "",
+      "description": "",
+      "stability_base": 0,
+      "legitimacy_base": 0,
+      "law_ids": [],
+      "ideology_ids": [],
+      "color_hex": "",
+      "is_active": false
+    }
+  ]
+}

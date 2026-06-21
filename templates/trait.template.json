@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "trait_id": "",
+      "display_name": "",
+      "description": "",
+      "category": "",
+      "effects": [],
+      "rarity": "",
+      "icon_asset": "",
+      "is_hidden": false
+    }
+  ]
+}

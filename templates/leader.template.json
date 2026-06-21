@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-06-21",
+  "records": [
+    {
+      "record_id": "",
+      "leader_id": "",
+      "display_name": "",
+      "birth_date": "",
+      "death_date": "",
+      "culture_id": "",
+      "religion_id": "",
+      "primary_language_id": "",
+      "trait_ids": [],
+      "dynasty_id": "",
+      "title": "",
+      "government_role": "",
+      "start_date": "",
+      "end_date": "",
+      "is_playable": false,
+      "notes": ""
+    }
+  ]
+}
