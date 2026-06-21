@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://world_map_screen"]
+[gd_scene load_steps=12 format=3 uid="uid://world_map_screen"]
 
 [ext_resource type="Script" path="res://src/UI/WorldMapScreen.cs" id="1_wms"]
 [ext_resource type="Script" path="res://src/UI/TopBar.cs" id="2_top"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" path="res://src/UI/BottomTabBar.cs" id="4_btb"]
 [ext_resource type="Script" path="res://src/Map/Rendering/MapCamera.cs" id="5_cam"]
 [ext_resource type="Script" path="res://src/Map/Rendering/WorldMapManager.cs" id="6_wmm"]
-[ext_resource type="PackedScene" path="res://scenes/Events/EventFeedPanel.tscn" id="7_efp"]
-[ext_resource type="PackedScene" path="res://scenes/Events/EventPopupWindow.tscn" id="8_epw"]
-[ext_resource type="PackedScene" path="res://scenes/Events/EventArchiveScreen.tscn" id="9_eas"]
+[ext_resource type="PackedScene" path="res://scenes/UI/TurnControls.tscn" id="7_tc"]
+[ext_resource type="PackedScene" path="res://scenes/UI/SaveLoadDialog.tscn" id="8_sld"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventFeedPanel.tscn" id="9_efp"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventPopupWindow.tscn" id="10_epw"]
+[ext_resource type="PackedScene" path="res://scenes/Events/EventArchiveScreen.tscn" id="11_eas"]
 
 [node name="WorldMapScreen" type="Control"]
 layout_mode = 3
@@ -31,6 +33,9 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 script = ExtResource("2_top")
+
+[node name="TurnControls" parent="MainVBox/TopBar" instance=ExtResource("7_tc")]
+unique_name_in_owner = true
 
 [node name="CenterSplit" type="HSplitContainer" parent="MainVBox"]
 layout_mode = 2
@@ -67,11 +72,14 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 script = ExtResource("4_btb")
 
-[node name="EventFeedPanel" parent="." instance=ExtResource("7_efp")]
+[node name="SaveLoadDialog" parent="." instance=ExtResource("8_sld")]
 unique_name_in_owner = true
 
-[node name="EventPopupWindow" parent="." instance=ExtResource("8_epw")]
+[node name="EventFeedPanel" parent="." instance=ExtResource("9_efp")]
 unique_name_in_owner = true
 
-[node name="EventArchiveScreen" parent="." instance=ExtResource("9_eas")]
+[node name="EventPopupWindow" parent="." instance=ExtResource("10_epw")]
+unique_name_in_owner = true
+
+[node name="EventArchiveScreen" parent="." instance=ExtResource("11_eas")]
 unique_name_in_owner = true

@@ -17,8 +17,8 @@ public partial class WorldMapScreen : Control
     private TopBar _topBar = null!;
     private NationInfoPanel _nationInfoPanel = null!;
     private WorldMapManager _worldMapManager = null!;
-    private TurnControls _turnControls = null!;
-    private SaveLoadDialog _saveLoadDialog = null!;
+    private TurnControls? _turnControls;
+    private SaveLoadDialog? _saveLoadDialog;
     private BottomTabBar? _bottomTabBar;
     private EventFeedPanel? _eventFeedPanel;
     private EventPopupWindow? _eventPopupWindow;
@@ -32,16 +32,20 @@ public partial class WorldMapScreen : Control
         _topBar = GetNode<TopBar>("%TopBar");
         _nationInfoPanel = GetNode<NationInfoPanel>("%NationInfoPanel");
         _worldMapManager = GetNode<WorldMapManager>("%WorldMapManager");
-        _turnControls = GetNode<TurnControls>("%TurnControls");
-        _saveLoadDialog = GetNode<SaveLoadDialog>("%SaveLoadDialog");
+        _turnControls = GetNodeOrNull<TurnControls>("%TurnControls");
+        _saveLoadDialog = GetNodeOrNull<SaveLoadDialog>("%SaveLoadDialog");
         _bottomTabBar = GetNodeOrNull<BottomTabBar>("%BottomTabBar");
         _eventFeedPanel = GetNodeOrNull<EventFeedPanel>("%EventFeedPanel");
         _eventPopupWindow = GetNodeOrNull<EventPopupWindow>("%EventPopupWindow");
         _eventArchiveScreen = GetNodeOrNull<EventArchiveScreen>("%EventArchiveScreen");
 
         _worldMapManager.NationSelected += OnNationSelected;
-        _saveLoadDialog.LoadCompleted += OnSaveLoaded;
         GameManager.Instance.EventSystem.TurnEventsResolved += OnTurnEventsResolved;
+
+        if (_saveLoadDialog != null)
+        {
+            _saveLoadDialog.LoadCompleted += OnSaveLoaded;
+        }
 
         if (_bottomTabBar != null)
         {
@@ -65,9 +69,13 @@ public partial class WorldMapScreen : Control
 
         var state = GameManager.Instance.GameState;
         _topBar.SetDateTurn(state.CurrentDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), state.CurrentTurn);
-        _topBar.AttachRightControl(_turnControls);
-        _turnControls.Configure(TurnSystem.Instance, _saveSystem);
-        _turnControls.Refresh();
+
+        if (_turnControls != null)
+        {
+            _topBar.AttachRightControl(_turnControls);
+            _turnControls.Configure(TurnSystem.Instance, _saveSystem);
+            _turnControls.Refresh();
+        }
 
         if (state.SelectedNationId is { } nationId)
         {
@@ -91,6 +99,11 @@ public partial class WorldMapScreen : Control
         if (GameManager.Instance != null)
         {
             GameManager.Instance.EventSystem.TurnEventsResolved -= OnTurnEventsResolved;
+        }
+
+        if (_saveLoadDialog != null)
+        {
+            _saveLoadDialog.LoadCompleted -= OnSaveLoaded;
         }
 
         if (_bottomTabBar != null)
@@ -158,7 +171,7 @@ public partial class WorldMapScreen : Control
 
     private void OnSaveLoaded()
     {
-        _turnControls.Refresh();
+        _turnControls?.Refresh();
 
         var nationId = GameManager.Instance.GameState.SelectedNationId;
         if (nationId == null)
