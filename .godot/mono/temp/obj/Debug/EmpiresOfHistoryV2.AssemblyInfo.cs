@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmpiresOfHistoryV2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6de369c9b77b069c04b5dee3f1398e9ec93a33b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+004c7c0117f8c24dd7add440d1c0cca01ba8b28f")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmpiresOfHistoryV2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmpiresOfHistoryV2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
