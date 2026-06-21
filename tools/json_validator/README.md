@@ -1,4 +1,4 @@
-# Json Validator Tool
+# JSON Validator Tool
 
 ## Purpose
 Validate all `data/` JSON files against formal schemas.
