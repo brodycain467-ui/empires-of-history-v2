@@ -1,0 +1,355 @@
+{
+  "schema_version": "1.0.0",
+  "borders": [
+    {
+      "province_a": "prov_brazil_brasilia",
+      "province_b": "prov_brazil_east",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_brazil_brasilia",
+      "province_b": "prov_brazil_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_brazil_brasilia",
+      "province_b": "prov_brazil_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_brazil_east",
+      "province_b": "prov_brazil_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_brazil_east",
+      "province_b": "prov_brazil_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_beijing",
+      "province_b": "prov_china_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_beijing",
+      "province_b": "prov_china_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_east",
+      "province_b": "prov_china_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_east",
+      "province_b": "prov_china_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_south",
+      "province_b": "prov_china_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_south",
+      "province_b": "prov_india_east",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_china_west",
+      "province_b": "prov_india_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_france_paris",
+      "province_b": "prov_france_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_france_paris",
+      "province_b": "prov_germany_berlin",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_france_paris",
+      "province_b": "prov_uk_london",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_france_south",
+      "province_b": "prov_germany_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_germany_berlin",
+      "province_b": "prov_germany_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_germany_berlin",
+      "province_b": "prov_uk_london",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_india_delhi",
+      "province_b": "prov_india_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_india_delhi",
+      "province_b": "prov_india_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_india_east",
+      "province_b": "prov_india_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_india_east",
+      "province_b": "prov_india_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_russia_east",
+      "province_b": "prov_russia_siberia",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_russia_moscow",
+      "province_b": "prov_russia_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_russia_moscow",
+      "province_b": "prov_russia_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_russia_siberia",
+      "province_b": "prov_russia_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_russia_siberia",
+      "province_b": "prov_russia_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_uk_london",
+      "province_b": "prov_uk_north",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_alaska",
+      "province_b": "prov_usa_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_dc",
+      "province_b": "prov_usa_east",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_dc",
+      "province_b": "prov_usa_midwest",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_east",
+      "province_b": "prov_usa_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_midwest",
+      "province_b": "prov_usa_south",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_midwest",
+      "province_b": "prov_usa_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "province_a": "prov_usa_south",
+      "province_b": "prov_usa_west",
+      "history": [
+        {
+          "year": 2011,
+          "state": "active"
+        }
+      ]
+    }
+  ]
+}

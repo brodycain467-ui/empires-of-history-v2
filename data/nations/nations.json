@@ -1,0 +1,237 @@
+{
+  "schema_version": "1.0.0",
+  "nations": [
+    {
+      "id": "nat_usa",
+      "name": "United States",
+      "display_name": "United States",
+      "tag": "USA",
+      "color": "#4a7abf",
+      "government_type": "presidential_republic",
+      "capital_province_id": "prov_usa_dc",
+      "tier": "great_power",
+      "population": 311600000,
+      "treasury": 1200000000000,
+      "historical_accuracy_score": 91.3,
+      "top_officials": [
+        {
+          "title": "President",
+          "name": "Barack Obama"
+        },
+        {
+          "title": "Vice President",
+          "name": "Joe Biden"
+        },
+        {
+          "title": "Secretary of State",
+          "name": "Hillary Clinton"
+        }
+      ],
+      "founding_year": 1776,
+      "flag_path": "res://assets/flags/usa.png"
+    },
+    {
+      "id": "nat_russia",
+      "name": "Russia",
+      "display_name": "Russia",
+      "tag": "RUS",
+      "color": "#bf4a4a",
+      "government_type": "presidential_republic",
+      "capital_province_id": "prov_russia_moscow",
+      "tier": "great_power",
+      "population": 143000000,
+      "treasury": 500000000000,
+      "historical_accuracy_score": 87.5,
+      "top_officials": [
+        {
+          "title": "President",
+          "name": "Dmitry Medvedev"
+        },
+        {
+          "title": "Prime Minister",
+          "name": "Vladimir Putin"
+        },
+        {
+          "title": "Foreign Minister",
+          "name": "Sergei Lavrov"
+        }
+      ],
+      "founding_year": 1991,
+      "flag_path": "res://assets/flags/russia.png"
+    },
+    {
+      "id": "nat_china",
+      "name": "China",
+      "display_name": "China",
+      "tag": "CHN",
+      "color": "#bf7a4a",
+      "government_type": "communist_state",
+      "capital_province_id": "prov_china_beijing",
+      "tier": "great_power",
+      "population": 1340000000,
+      "treasury": 3100000000000,
+      "historical_accuracy_score": 85.0,
+      "top_officials": [
+        {
+          "title": "President",
+          "name": "Hu Jintao"
+        },
+        {
+          "title": "Premier",
+          "name": "Wen Jiabao"
+        },
+        {
+          "title": "Foreign Minister",
+          "name": "Yang Jiechi"
+        }
+      ],
+      "founding_year": 1949,
+      "flag_path": "res://assets/flags/china.png"
+    },
+    {
+      "id": "nat_germany",
+      "name": "Germany",
+      "display_name": "Germany",
+      "tag": "DEU",
+      "color": "#6a8a6a",
+      "government_type": "parliamentary_republic",
+      "capital_province_id": "prov_germany_berlin",
+      "tier": "regional_power",
+      "population": 81900000,
+      "treasury": 580000000000,
+      "historical_accuracy_score": 89.2,
+      "top_officials": [
+        {
+          "title": "Chancellor",
+          "name": "Angela Merkel"
+        },
+        {
+          "title": "President",
+          "name": "Christian Wulff"
+        },
+        {
+          "title": "Foreign Minister",
+          "name": "Guido Westerwelle"
+        }
+      ],
+      "founding_year": 1990,
+      "flag_path": "res://assets/flags/germany.png"
+    },
+    {
+      "id": "nat_france",
+      "name": "France",
+      "display_name": "France",
+      "tag": "FRA",
+      "color": "#7a6abf",
+      "government_type": "presidential_republic",
+      "capital_province_id": "prov_france_paris",
+      "tier": "regional_power",
+      "population": 65000000,
+      "treasury": 350000000000,
+      "historical_accuracy_score": 88.1,
+      "top_officials": [
+        {
+          "title": "President",
+          "name": "Nicolas Sarkozy"
+        },
+        {
+          "title": "Prime Minister",
+          "name": "Fran\u00e7ois Fillon"
+        },
+        {
+          "title": "Foreign Minister",
+          "name": "Alain Jupp\u00e9"
+        }
+      ],
+      "founding_year": 843,
+      "flag_path": "res://assets/flags/france.png"
+    },
+    {
+      "id": "nat_uk",
+      "name": "United Kingdom",
+      "display_name": "United Kingdom",
+      "tag": "GBR",
+      "color": "#bf9a4a",
+      "government_type": "parliamentary_monarchy",
+      "capital_province_id": "prov_uk_london",
+      "tier": "regional_power",
+      "population": 63000000,
+      "treasury": 320000000000,
+      "historical_accuracy_score": 90.0,
+      "top_officials": [
+        {
+          "title": "Prime Minister",
+          "name": "David Cameron"
+        },
+        {
+          "title": "Foreign Secretary",
+          "name": "William Hague"
+        },
+        {
+          "title": "Chancellor",
+          "name": "George Osborne"
+        }
+      ],
+      "founding_year": 1707,
+      "flag_path": "res://assets/flags/uk.png"
+    },
+    {
+      "id": "nat_brazil",
+      "name": "Brazil",
+      "display_name": "Brazil",
+      "tag": "BRA",
+      "color": "#4abf7a",
+      "government_type": "presidential_republic",
+      "capital_province_id": "prov_brazil_brasilia",
+      "tier": "regional_power",
+      "population": 197000000,
+      "treasury": 350000000000,
+      "historical_accuracy_score": 83.4,
+      "top_officials": [
+        {
+          "title": "President",
+          "name": "Dilma Rousseff"
+        },
+        {
+          "title": "Vice President",
+          "name": "Michel Temer"
+        },
+        {
+          "title": "Foreign Minister",
+          "name": "Antonio Patriota"
+        }
+      ],
+      "founding_year": 1822,
+      "flag_path": "res://assets/flags/brazil.png"
+    },
+    {
+      "id": "nat_india",
+      "name": "India",
+      "display_name": "India",
+      "tag": "IND",
+      "color": "#bf8a4a",
+      "government_type": "parliamentary_republic",
+      "capital_province_id": "prov_india_delhi",
+      "tier": "regional_power",
+      "population": 1210000000,
+      "treasury": 290000000000,
+      "historical_accuracy_score": 84.7,
+      "top_officials": [
+        {
+          "title": "Prime Minister",
+          "name": "Manmohan Singh"
+        },
+        {
+          "title": "President",
+          "name": "Pratibha Patil"
+        },
+        {
+          "title": "Foreign Minister",
+          "name": "S.M. Krishna"
+        }
+      ],
+      "founding_year": 1947,
+      "flag_path": "res://assets/flags/india.png"
+    }
+  ]
+}
