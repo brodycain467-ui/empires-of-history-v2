@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "snapshots": [
+    {
+      "year": 2011,
+      "ownership": {
+        "prov_usa_dc": "nat_usa",
+        "prov_usa_east": "nat_usa",
+        "prov_usa_south": "nat_usa",
+        "prov_usa_midwest": "nat_usa",
+        "prov_usa_west": "nat_usa",
+        "prov_usa_alaska": "nat_usa",
+        "prov_russia_moscow": "nat_russia",
+        "prov_russia_west": "nat_russia",
+        "prov_russia_siberia": "nat_russia",
+        "prov_russia_east": "nat_russia",
+        "prov_russia_south": "nat_russia",
+        "prov_china_beijing": "nat_china",
+        "prov_china_north": "nat_china",
+        "prov_china_south": "nat_china",
+        "prov_china_west": "nat_china",
+        "prov_china_east": "nat_china",
+        "prov_germany_berlin": "nat_germany",
+        "prov_germany_south": "nat_germany",
+        "prov_france_paris": "nat_france",
+        "prov_france_south": "nat_france",
+        "prov_uk_london": "nat_uk",
+        "prov_uk_north": "nat_uk",
+        "prov_brazil_brasilia": "nat_brazil",
+        "prov_brazil_north": "nat_brazil",
+        "prov_brazil_south": "nat_brazil",
+        "prov_brazil_east": "nat_brazil",
+        "prov_india_delhi": "nat_india",
+        "prov_india_north": "nat_india",
+        "prov_india_south": "nat_india",
+        "prov_india_east": "nat_india"
+      }
+    }
+  ]
+}
