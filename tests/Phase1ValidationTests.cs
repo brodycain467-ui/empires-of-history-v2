@@ -81,6 +81,18 @@ namespace EmpiresOfHistory.Tests
         }
 
         [Fact]
+        public void Test_DateSystem_GetFormattedDate_ThrowsOnInvalidInternalMonth()
+        {
+            // Arrange
+            var monthField = typeof(DateSystem).GetField("_month", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            Assert.NotNull(monthField);
+            monthField!.SetValue(_dateSystem, 13);
+
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => _dateSystem.GetFormattedDate());
+        }
+
+        [Fact]
         public void Test_TurnManager_Initialization()
         {
             // Arrange & Act
