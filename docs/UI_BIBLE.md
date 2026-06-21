@@ -341,7 +341,7 @@ Technology .............. 88
 - Labels may be tan; values should remain cream.
 - Do not create three-column stat grids unless the screen is explicitly analytical.
 
-## 3.9 Scaling Rules
+## 3.8 Scaling Rules
 - Preserve bar heights unless accessibility scaling requires adjustment.
 - The right sidebar should collapse to an overlay before becoming too narrow.
 - The lower-left overlay pins to 16px from left and bottom edges.
@@ -617,7 +617,7 @@ Motion clarifies change; it does not entertain. All motion should be short, read
 | Fallback | Silhouette icon, gold tint |
 | Saturation filter | 85% |
 
-## 10.3 Era Style Guide
+## 10.2 Era Style Guide
 | Era | Direction |
 |---|---|
 | Ancient | Sculptural, painted, relief-like, parchment-toned |
@@ -625,7 +625,7 @@ Motion clarifies change; it does not entertain. All motion should be short, read
 | Modern | Documentary or archival-photo treatment |
 | Future | Disciplined state-portrait style, still grounded in the house palette |
 
-## 10.4 Naming and Storage
+## 10.3 Naming and Storage
 | Property | Spec |
 |---|---|
 | File naming | `portrait_{leader_id}.png` |
