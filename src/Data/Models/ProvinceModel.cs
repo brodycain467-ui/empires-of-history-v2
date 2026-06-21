@@ -40,9 +40,6 @@ namespace EmpiresOfHistory.Data.Models
         // Metadata
         public Dictionary<string, object> Metadata { get; set; } = new();
 
-        public ProvinceModel()
-        {
-        }
     }
 
     public class CulturalComposition
