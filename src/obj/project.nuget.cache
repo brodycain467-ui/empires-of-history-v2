@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "S7FR9kMkJn8=",
+  "success": true,
+  "projectFilePath": "/home/runner/work/empires-of-history-v2/empires-of-history-v2/src/EmpiresOfHistory.Map.csproj",
+  "expectedPackageFiles": [
+    "/tmp/codeql-scratch-bb7df2d79f39bfd4/dbs/csharp/working/packages/microsoft.netcore.app.ref/8.0.28/microsoft.netcore.app.ref.8.0.28.nupkg.sha512",
+    "/tmp/codeql-scratch-bb7df2d79f39bfd4/dbs/csharp/working/packages/microsoft.aspnetcore.app.ref/8.0.28/microsoft.aspnetcore.app.ref.8.0.28.nupkg.sha512"
+  ],
+  "logs": []
+}
