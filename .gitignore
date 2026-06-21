@@ -6,3 +6,17 @@ build/
 *.log
 .vscode/
 .idea/
+
+# .NET / C# build artifacts
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Godot build artifacts
+.godot/
+
+# Test binary artifacts
+tests/bin/
+tests/obj/
