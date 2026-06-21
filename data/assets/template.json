@@ -1,0 +1,21 @@
+{
+  "database": "assets",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "asset_id": "asset_example",
+      "asset_type": "icon",
+      "path": "res://assets/example.png",
+      "metadata": {},
+      "sources": [
+        "Asset pipeline manifest"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    }
+  ]
+}

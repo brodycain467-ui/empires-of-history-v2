@@ -1,0 +1,24 @@
+{
+  "database": "cultures",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "culture_example",
+      "name": "Example Culture",
+      "parent_culture_id": null,
+      "language_ids": [],
+      "region_ids": [],
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

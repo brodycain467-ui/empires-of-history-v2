@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "governments database schema",
+  "type": "object",
+  "required": [
+    "database",
+    "schema_version",
+    "minimum_engine_version",
+    "last_updated",
+    "record_count",
+    "records"
+  ],
+  "properties": {
+    "database": {
+      "type": "string",
+      "const": "governments"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "minimum_engine_version": {
+      "type": "string",
+      "const": "0.4.95"
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "category",
+          "power_structure",
+          "legal_basis",
+          "metadata",
+          "sources",
+          "confidence",
+          "verified",
+          "notes",
+          "future_extensions"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^gov_[a-z0-9_]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "power_structure": {
+            "type": "string"
+          },
+          "legal_basis": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "Verified",
+              "Probable",
+              "Disputed",
+              "Unverified"
+            ]
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "future_extensions": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

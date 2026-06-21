@@ -1,0 +1,24 @@
+{
+  "database": "political_parties",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "party_example",
+      "name": "Example Party",
+      "ideology": "centrist",
+      "founded_year": 1900,
+      "platform_summary": "",
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "database": "timelines",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "era_id": "era_example",
+      "display_name": "Example Era",
+      "start_year": 1,
+      "end_year": 100,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "",
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    }
+  ]
+}

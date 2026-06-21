@@ -1,0 +1,24 @@
+{
+  "database": "holy_sites",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "holy_site_example",
+      "name": "Example Holy Site",
+      "religion_id": "religion_example",
+      "province_id": null,
+      "significance_level": "major",
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "database": "religions",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "religion_example",
+      "name": "Example Religion",
+      "parent_religion_id": null,
+      "holy_site_ids": [],
+      "doctrine_summary": "",
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

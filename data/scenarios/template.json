@@ -1,0 +1,30 @@
+{
+  "database": "scenarios",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "scenario_example",
+      "name": "Example",
+      "owner_id": null,
+      "controller_id": null,
+      "core_owner_id": null,
+      "population": 0,
+      "culture_id": null,
+      "religion_id": null,
+      "government_id": null,
+      "historical_region": null,
+      "neighbor_ids": [],
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

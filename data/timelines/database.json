@@ -1,0 +1,153 @@
+{
+  "database": "timelines",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 8,
+  "records": [
+    {
+      "era_id": "era_8300_bc",
+      "display_name": "8300 BC",
+      "start_year": -8300,
+      "end_year": -3001,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Early agrarian settlements and pre-state societies.",
+      "sources": [
+        "Encyclopaedia Britannica"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_ancient",
+      "display_name": "Ancient",
+      "start_year": -3000,
+      "end_year": 500,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Rise of early states, empires, and classical civilizations.",
+      "sources": [
+        "Library of Congress"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_classical",
+      "display_name": "Classical",
+      "start_year": 501,
+      "end_year": 1000,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Late antiquity transitions and regional consolidation.",
+      "sources": [
+        "Encyclopaedia Britannica"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_medieval",
+      "display_name": "Medieval",
+      "start_year": 1001,
+      "end_year": 1500,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Feudal structures, dynastic expansion, and long-distance exchange.",
+      "sources": [
+        "Library of Congress"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_early_modern",
+      "display_name": "Early Modern",
+      "start_year": 1501,
+      "end_year": 1750,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "State centralization, maritime expansion, and scientific advances.",
+      "sources": [
+        "Encyclopaedia Britannica"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_industrial",
+      "display_name": "Industrial",
+      "start_year": 1751,
+      "end_year": 1913,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Industrialization and modern mass society transformation.",
+      "sources": [
+        "Library of Congress"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_modern",
+      "display_name": "Modern",
+      "start_year": 1914,
+      "end_year": 2024,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Global wars, decolonization, and interconnected modern systems.",
+      "sources": [
+        "Encyclopaedia Britannica"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": ""
+    },
+    {
+      "era_id": "era_future",
+      "display_name": "Future (2100)",
+      "start_year": 2025,
+      "end_year": 2100,
+      "government_pool": [],
+      "religion_pool": [],
+      "technology_pool": [],
+      "leader_pool": [],
+      "event_pool": [],
+      "historical_notes": "Projected strategic horizon and simulation sandbox interval.",
+      "sources": [
+        "Repository design council"
+      ],
+      "confidence": "Probable",
+      "verified": false,
+      "notes": "Forward-looking planning era."
+    }
+  ]
+}
