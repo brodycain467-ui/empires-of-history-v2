@@ -9,6 +9,14 @@ public class GameState
     public string? SelectedNationId { get; set; }
     public string? SelectedProvinceId { get; set; }
 
+    public void SetState(DateTime currentDate, int currentTurn, string? selectedNationId = null, string? selectedProvinceId = null)
+    {
+        CurrentDate = currentDate;
+        CurrentTurn = currentTurn;
+        SelectedNationId = selectedNationId;
+        SelectedProvinceId = selectedProvinceId;
+    }
+
     public void AdvanceTurn(int months = 3)
     {
         CurrentTurn++;

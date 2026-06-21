@@ -6,7 +6,7 @@ public partial class TopBar : PanelContainer
 {
     private Label _nationLabel = null!;
     private Label _resourceLabel = null!;
-    private Label _turnLabel = null!;
+    private HBoxContainer _rightContainer = null!;
 
     public override void _Ready()
     {
@@ -17,11 +17,21 @@ public partial class TopBar : PanelContainer
 
         _nationLabel = new Label { Text = "🏳 Unknown Nation", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
         _resourceLabel = new Label { Text = "Treasury: $0  |  Population: 0", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill, HorizontalAlignment = HorizontalAlignment.Center };
-        _turnLabel = new Label { Text = "2011-01-01 • Turn 1", HorizontalAlignment = HorizontalAlignment.Right, SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
+        _rightContainer = new HBoxContainer
+        {
+            Alignment = BoxContainer.AlignmentMode.End,
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill
+        };
 
         row.AddChild(_nationLabel);
         row.AddChild(_resourceLabel);
-        row.AddChild(_turnLabel);
+        row.AddChild(_rightContainer);
+
+        var turnControls = GetNodeOrNull<Control>("TurnControls");
+        if (turnControls != null)
+        {
+            turnControls.Reparent(_rightContainer);
+        }
     }
 
     public void SetNation(string nationName)
@@ -36,6 +46,13 @@ public partial class TopBar : PanelContainer
 
     public void SetDateTurn(string date, int turn)
     {
-        _turnLabel.Text = $"{date} • Turn {turn}";
+    }
+
+    public void AttachRightControl(Control control)
+    {
+        if (control.GetParent() != _rightContainer)
+        {
+            control.Reparent(_rightContainer);
+        }
     }
 }

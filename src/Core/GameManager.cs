@@ -26,10 +26,11 @@ public partial class GameManager : Node
         OwnershipSystem.Initialize(provinces.ToList());
         NationColorRegistry.Initialize(nations.ToList());
         BorderHistorySystem.Load();
+    }
 
-        if (nations.Count > 0)
-        {
-            GameState.SelectedNationId = nations[0].Id;
-        }
+    public void NewGame(string nationId)
+    {
+        GameState = new GameState();
+        GameState.SelectedNationId = nationId;
     }
 }

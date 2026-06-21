@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 config/name="Empires of History V2"
-run/main_scene="res://scenes/Map/WorldMapScreen.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 
 [autoload]
 GameManager="*res://src/Core/GameManager.cs"
+SceneRouter="*res://src/Core/SceneRouter.cs"
+TurnSystem="*res://src/Core/TurnSystem.cs"
 
 [dotnet]
 project/assembly_name="EmpiresOfHistoryV2"
