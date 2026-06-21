@@ -140,7 +140,7 @@
 - Capital provinces may be slightly lightened.
 - Over text, nation fills must maintain readability or receive a dark overlay.
 
-## 1.8 Map Color Rules
+## 1.8 Map Color Tokens
 | Role | Hex | Use |
 |---|---|---|
 | Ocean | `#0d1b2a` | Water |
@@ -151,6 +151,7 @@
 | Fallback territory | `#7a7a7a` | Missing owner color fallback |
 
 ### Map Rules
+- This section defines shared color tokens only; authoritative province behavior, LOD, and placeholder map-mode rules live in Section 9.
 - Ocean must remain darker than all land colors.
 - Province borders should be visible but restrained.
 - Gold selection borders must read over every nation fill.
@@ -610,7 +611,7 @@ Motion clarifies change; it does not entertain. All motion should be short, read
 ## 10.1 Portrait Spec
 | Property | Spec |
 |---|---|
-| Shape | Rectangular 3:4 crop |
+| Shape | Rectangular 3:4 crop (width:height) |
 | Sizes | `48×64`, `96×128`, `192×256` |
 | Container background | `#1a1208` |
 | Container border | 1px gold |
@@ -675,96 +676,96 @@ Motion clarifies change; it does not entertain. All motion should be short, read
 ## 12.1 Status Legend
 | Icon | Meaning |
 |---|---|
-| ✅ | Implemented in the repository |
-| 🔒 | Approved/locked visual target, not fully implemented yet |
-| ⚠️ | Planned, placeholder, or future component |
+| ✅ Implemented | Implemented in the repository |
+| 🔒 Approved | Approved/locked visual target, not fully implemented yet |
+| ⚠️ Planned | Planned, placeholder, or future component |
 
 ## 12.2 Existing Implemented Components
 | Component | File Path | Status | Phase |
 |---|---|---:|---:|
-| Global theme builder | `src/UI/Theme/EmpiresDarkTheme.cs` | ✅ | 1 |
-| Main menu screen root | `scenes/MainMenu.tscn` | ✅ | 1 |
-| Main menu controller | `src/UI/MainMenuScreen.cs` | ✅ | 1 |
-| Main menu left navigation | `scenes/MainMenu.tscn#RootMargin/RootVBox/ContentRow/LeftNav` | ✅ | 1 |
-| Recent saves panel | `scenes/MainMenu.tscn#RootMargin/RootVBox/ContentRow/RecentSavesPanel` | ✅ | 1 |
-| Quick start panel | `scenes/MainMenu.tscn#RootMargin/RootVBox/ContentRow/QuickStartPanel` | ✅ | 1 |
-| Save/load dialog scene | `scenes/UI/SaveLoadDialog.tscn` | ✅ | 1 |
-| Save/load dialog controller | `src/UI/SaveLoadDialog.cs` | ✅ | 1 |
-| Nation select screen root | `scenes/NationSelect.tscn` | ✅ | 1 |
-| Nation select controller | `src/UI/NationSelectScreen.cs` | ✅ | 1 |
-| Nation selection row card | `src/UI/NationSelectScreen.cs#CreateNationRow` | ✅ | 1 |
-| World map screen root | `scenes/Map/WorldMapScreen.tscn` | ✅ | 2 |
-| World map controller | `src/UI/WorldMapScreen.cs` | ✅ | 2 |
-| Top bar | `src/UI/TopBar.cs` | ✅ | 1 |
-| Turn controls scene | `scenes/UI/TurnControls.tscn` | ✅ | 1 |
-| Turn controls controller | `src/UI/TurnControls.cs` | ✅ | 1 |
-| Right nation info panel | `src/UI/NationInfoPanel.cs` | ✅ | 2 |
-| Bottom tab bar | `src/UI/BottomTabBar.cs` | ✅ | 1 |
-| Event feed overlay scene | `scenes/Events/EventFeedPanel.tscn` | ✅ | 2 |
-| Event feed overlay controller | `src/UI/Events/EventFeedPanel.cs` | ✅ | 2 |
-| Event popup scene | `scenes/Events/EventPopupWindow.tscn` | ✅ | 2 |
-| Event popup controller | `src/UI/Events/EventPopupWindow.cs` | ✅ | 2 |
-| Event archive scene | `scenes/Events/EventArchiveScreen.tscn` | ✅ | 2 |
-| Event archive controller | `src/UI/Events/EventArchiveScreen.cs` | ✅ | 2 |
-| Province visual scene | `scenes/Map/ProvinceVisual.tscn` | ✅ | 2 |
-| Province visual controller | `src/Map/Rendering/ProvinceVisual.cs` | ✅ | 2 |
-| World map renderer / interaction shell | `src/Map/Rendering/WorldMapManager.cs` | ✅ | 2 |
-| Map camera interaction | `src/Map/Rendering/MapCamera.cs` | ✅ | 2 |
-| Map LOD manager | `src/Map/Rendering/LODManager.cs` | ✅ | 2 |
-| Nation color registry | `src/Map/Systems/NationColorRegistry.cs` | ✅ | 2 |
+| Global theme builder | `src/UI/Theme/EmpiresDarkTheme.cs` | ✅ Implemented | 1 |
+| Main menu screen root | `scenes/MainMenu.tscn` | ✅ Implemented | 1 |
+| Main menu controller | `src/UI/MainMenuScreen.cs` | ✅ Implemented | 1 |
+| Main menu left navigation | `scenes/MainMenu.tscn#RootMargin/RootVBox/ContentRow/LeftNav` | ✅ Implemented | 1 |
+| Recent saves panel | `scenes/MainMenu.tscn#RootMargin/RootVBox/ContentRow/RecentSavesPanel` | ✅ Implemented | 1 |
+| Quick start panel | `scenes/MainMenu.tscn#RootMargin/RootVBox/ContentRow/QuickStartPanel` | ✅ Implemented | 1 |
+| Save/load dialog scene | `scenes/UI/SaveLoadDialog.tscn` | ✅ Implemented | 1 |
+| Save/load dialog controller | `src/UI/SaveLoadDialog.cs` | ✅ Implemented | 1 |
+| Nation select screen root | `scenes/NationSelect.tscn` | ✅ Implemented | 1 |
+| Nation select controller | `src/UI/NationSelectScreen.cs` | ✅ Implemented | 1 |
+| Nation selection row card | `src/UI/NationSelectScreen.cs#CreateNationRow` | ✅ Implemented | 1 |
+| World map screen root | `scenes/Map/WorldMapScreen.tscn` | ✅ Implemented | 2 |
+| World map controller | `src/UI/WorldMapScreen.cs` | ✅ Implemented | 2 |
+| Top bar | `src/UI/TopBar.cs` | ✅ Implemented | 1 |
+| Turn controls scene | `scenes/UI/TurnControls.tscn` | ✅ Implemented | 1 |
+| Turn controls controller | `src/UI/TurnControls.cs` | ✅ Implemented | 1 |
+| Right nation info panel | `src/UI/NationInfoPanel.cs` | ✅ Implemented | 2 |
+| Bottom tab bar | `src/UI/BottomTabBar.cs` | ✅ Implemented | 1 |
+| Event feed overlay scene | `scenes/Events/EventFeedPanel.tscn` | ✅ Implemented | 2 |
+| Event feed overlay controller | `src/UI/Events/EventFeedPanel.cs` | ✅ Implemented | 2 |
+| Event popup scene | `scenes/Events/EventPopupWindow.tscn` | ✅ Implemented | 2 |
+| Event popup controller | `src/UI/Events/EventPopupWindow.cs` | ✅ Implemented | 2 |
+| Event archive scene | `scenes/Events/EventArchiveScreen.tscn` | ✅ Implemented | 2 |
+| Event archive controller | `src/UI/Events/EventArchiveScreen.cs` | ✅ Implemented | 2 |
+| Province visual scene | `scenes/Map/ProvinceVisual.tscn` | ✅ Implemented | 2 |
+| Province visual controller | `src/Map/Rendering/ProvinceVisual.cs` | ✅ Implemented | 2 |
+| World map renderer / interaction shell | `src/Map/Rendering/WorldMapManager.cs` | ✅ Implemented | 2 |
+| Map camera interaction | `src/Map/Rendering/MapCamera.cs` | ✅ Implemented | 2 |
+| Map LOD manager | `src/Map/Rendering/LODManager.cs` | ✅ Implemented | 2 |
+| Nation color registry | `src/Map/Systems/NationColorRegistry.cs` | ✅ Implemented | 2 |
 
 ## 12.3 Locked Approved Targets
 | Component | File Path / Source | Status | Phase |
 |---|---|---:|---:|
-| Approved reference pack | `docs/ui/approved/README.md` | 🔒 | 1 |
-| Approved main menu target | `docs/ui/approved/approved_main_menu.png.md` | 🔒 | 1 |
-| Approved world map target | `docs/ui/approved/approved_world_map.png.md` | 🔒 | 2 |
-| Approved war screen target | `docs/ui/approved/approved_war_screen.png.md` | 🔒 | 5 |
-| Painterly main menu backdrop treatment | Approved main menu reference | 🔒 | 1 |
-| Expanded top resource strip | Approved world map reference | 🔒 | 2 |
-| Leader portrait block in right sidebar | Approved world map reference | 🔒 | 2 |
-| Mini strategic map in right sidebar | Approved world map reference | 🔒 | 2 |
-| Persistent world news overlay treatment | Approved world map reference | 🔒 | 2 |
-| War screen root shell | Approved war screen reference | 🔒 | 5 |
-| Attacker war card | Approved war screen reference | 🔒 | 5 |
-| Defender war card | Approved war screen reference | 🔒 | 5 |
-| War score bar | Approved war screen reference | 🔒 | 5 |
-| War objectives panel | Approved war screen reference | 🔒 | 5 |
-| War mini-map | Approved war screen reference | 🔒 | 5 |
-| War bottom action bar | Approved war screen reference | 🔒 | 5 |
+| Approved reference pack | `docs/ui/approved/README.md` | 🔒 Approved | 1 |
+| Approved main menu target | `docs/ui/approved/approved_main_menu.png.md` | 🔒 Approved | 1 |
+| Approved world map target | `docs/ui/approved/approved_world_map.png.md` | 🔒 Approved | 2 |
+| Approved war screen target | `docs/ui/approved/approved_war_screen.png.md` | 🔒 Approved | 5 |
+| Painterly main menu backdrop treatment | Approved main menu reference | 🔒 Approved | 1 |
+| Expanded top resource strip | Approved world map reference | 🔒 Approved | 2 |
+| Leader portrait block in right sidebar | Approved world map reference | 🔒 Approved | 2 |
+| Mini strategic map in right sidebar | Approved world map reference | 🔒 Approved | 2 |
+| Persistent world news overlay treatment | Approved world map reference | 🔒 Approved | 2 |
+| War screen root shell | Approved war screen reference | 🔒 Approved | 5 |
+| Attacker war card | Approved war screen reference | 🔒 Approved | 5 |
+| Defender war card | Approved war screen reference | 🔒 Approved | 5 |
+| War score bar | Approved war screen reference | 🔒 Approved | 5 |
+| War objectives panel | Approved war screen reference | 🔒 Approved | 5 |
+| War mini-map | Approved war screen reference | 🔒 Approved | 5 |
+| War bottom action bar | Approved war screen reference | 🔒 Approved | 5 |
 
 ## 12.4 Planned and Placeholder Components
 | Component | Planned Home | Status | Phase |
 |---|---|---:|---:|
-| Government detail screen | future `src/UI/` screen | ⚠️ | 4 |
-| Economy detail screen | future `src/UI/` screen | ⚠️ | 4 |
-| Military detail screen | future `src/UI/` screen | ⚠️ | 5 |
-| Diplomacy detail screen | future `src/UI/` screen | ⚠️ | 7 |
-| Technology detail screen | future `src/UI/` screen | ⚠️ | 6 |
-| Religion detail screen | future `src/UI/` screen | ⚠️ | 4 |
-| Intelligence detail screen | future `src/UI/` screen | ⚠️ | 7 |
-| GIA advisor screen | future `src/UI/` screen | ⚠️ | 7 |
-| Map modes panel | future `src/UI/` screen or overlay | ⚠️ | 2 |
-| Population map mode legend | future map overlay UI | ⚠️ | 3 |
-| Religion map mode legend | future map overlay UI | ⚠️ | 4 |
-| Government map mode legend | future map overlay UI | ⚠️ | 4 |
-| Historical accuracy map mode legend | future map overlay UI | ⚠️ | 3 |
-| Dedicated tooltip system | shared overlay utility | ⚠️ | 1 |
-| Notification toast system | shared overlay utility | ⚠️ | 2 |
-| Negotiation peace dialog | future war UI | ⚠️ | 5 |
-| War goals dialog | future war UI | ⚠️ | 5 |
-| Deployment panel | future war UI | ⚠️ | 5 |
-| Military strategy panel | future war UI | ⚠️ | 5 |
-| World diplomacy panel | future diplomacy UI | ⚠️ | 7 |
-| Scenario browser | future main menu panel | ⚠️ | 3 |
-| Multiplayer screen | future main menu panel | ⚠️ | 8 |
-| Settings screen | future main menu panel | ⚠️ | 1 |
-| Credits screen | future main menu panel | ⚠️ | 1 |
-| Tutorial overlay system | shared onboarding UI | ⚠️ | 10 |
+| Government detail screen | future `src/UI/` screen | ⚠️ Planned | 4 |
+| Economy detail screen | future `src/UI/` screen | ⚠️ Planned | 4 |
+| Military detail screen | future `src/UI/` screen | ⚠️ Planned | 5 |
+| Diplomacy detail screen | future `src/UI/` screen | ⚠️ Planned | 7 |
+| Technology detail screen | future `src/UI/` screen | ⚠️ Planned | 6 |
+| Religion detail screen | future `src/UI/` screen | ⚠️ Planned | 4 |
+| Intelligence detail screen | future `src/UI/` screen | ⚠️ Planned | 7 |
+| GIA advisor screen | future `src/UI/` screen | ⚠️ Planned | 7 |
+| Map modes panel | future `src/UI/` screen or overlay | ⚠️ Planned | 2 |
+| Population map mode legend | future map overlay UI | ⚠️ Planned | 3 |
+| Religion map mode legend | future map overlay UI | ⚠️ Planned | 4 |
+| Government map mode legend | future map overlay UI | ⚠️ Planned | 4 |
+| Historical accuracy map mode legend | future map overlay UI | ⚠️ Planned | 3 |
+| Dedicated tooltip system | shared overlay utility | ⚠️ Planned | 1 |
+| Notification toast system | shared overlay utility | ⚠️ Planned | 2 |
+| Negotiation peace dialog | future war UI | ⚠️ Planned | 5 |
+| War goals dialog | future war UI | ⚠️ Planned | 5 |
+| Deployment panel | future war UI | ⚠️ Planned | 5 |
+| Military strategy panel | future war UI | ⚠️ Planned | 5 |
+| World diplomacy panel | future diplomacy UI | ⚠️ Planned | 7 |
+| Scenario browser | future main menu panel | ⚠️ Planned | 3 |
+| Multiplayer screen | future main menu panel | ⚠️ Planned | 8 |
+| Settings screen | future main menu panel | ⚠️ Planned | 1 |
+| Credits screen | future main menu panel | ⚠️ Planned | 1 |
+| Tutorial overlay system | shared onboarding UI | ⚠️ Planned | 10 |
 
 ### Inventory Rules
 - Every new UI component must be added to this table.
-- `✅` means implemented, `🔒` means approved target, `⚠️` means planned or placeholder.
+- `✅ Implemented` means implemented, `🔒 Approved` means approved target, `⚠️ Planned` means planned or placeholder.
 - When a planned component is built, update status and phase as needed.
 
 ---
