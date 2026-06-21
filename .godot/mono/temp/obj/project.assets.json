@@ -88,7 +88,7 @@
     ]
   },
   "packageFolders": {
-    "/tmp/codeql-scratch-bb7df2d79f39bfd4/dbs/csharp/working/packages": {}
+    "/home/runner/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -96,7 +96,7 @@
       "projectUniqueName": "/home/runner/work/empires-of-history-v2/empires-of-history-v2/EmpiresOfHistoryV2.csproj",
       "projectName": "EmpiresOfHistoryV2",
       "projectPath": "/home/runner/work/empires-of-history-v2/empires-of-history-v2/EmpiresOfHistoryV2.csproj",
-      "packagesPath": "/tmp/codeql-scratch-bb7df2d79f39bfd4/dbs/csharp/working/packages",
+      "packagesPath": "/home/runner/.nuget/packages/",
       "outputPath": "/home/runner/work/empires-of-history-v2/empires-of-history-v2/.godot/mono/temp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
@@ -156,16 +156,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.28, 8.0.28]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.28, 8.0.28]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
