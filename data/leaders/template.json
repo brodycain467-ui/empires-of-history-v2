@@ -1,0 +1,26 @@
+{
+  "database": "leaders",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "leader_example",
+      "name": "Example Leader",
+      "nation_id": null,
+      "dynasty_id": null,
+      "birth_year": 1700,
+      "death_year": null,
+      "trait_ids": [],
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

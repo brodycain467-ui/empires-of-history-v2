@@ -1,0 +1,25 @@
+{
+  "database": "technologies",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "tech_example",
+      "name": "Example Technology",
+      "domain": "industry",
+      "era_id": "era_industrial",
+      "prerequisite_ids": [],
+      "unlock_effects": {},
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

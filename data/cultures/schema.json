@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "cultures database schema",
+  "type": "object",
+  "required": [
+    "database",
+    "schema_version",
+    "minimum_engine_version",
+    "last_updated",
+    "record_count",
+    "records"
+  ],
+  "properties": {
+    "database": {
+      "type": "string",
+      "const": "cultures"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "minimum_engine_version": {
+      "type": "string",
+      "const": "0.4.95"
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "parent_culture_id",
+          "language_ids",
+          "region_ids",
+          "metadata",
+          "sources",
+          "confidence",
+          "verified",
+          "notes",
+          "future_extensions"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^culture_[a-z0-9_]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parent_culture_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "language_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "region_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "Verified",
+              "Probable",
+              "Disputed",
+              "Unverified"
+            ]
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "future_extensions": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

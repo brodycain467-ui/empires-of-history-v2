@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "timelines database schema",
+  "type": "object",
+  "required": [
+    "database",
+    "schema_version",
+    "minimum_engine_version",
+    "last_updated",
+    "record_count",
+    "records"
+  ],
+  "properties": {
+    "database": {
+      "type": "string",
+      "const": "timelines"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "minimum_engine_version": {
+      "type": "string",
+      "const": "0.4.95"
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "era_id",
+          "display_name",
+          "start_year",
+          "end_year",
+          "government_pool",
+          "religion_pool",
+          "technology_pool",
+          "leader_pool",
+          "event_pool",
+          "historical_notes",
+          "sources",
+          "confidence",
+          "verified",
+          "notes"
+        ],
+        "properties": {
+          "era_id": {
+            "type": "string",
+            "pattern": "^era_[a-z0-9_]+$"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "start_year": {
+            "type": "integer"
+          },
+          "end_year": {
+            "type": "integer"
+          },
+          "government_pool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "religion_pool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "technology_pool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "leader_pool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "event_pool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "historical_notes": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "Verified",
+              "Probable",
+              "Disputed",
+              "Unverified"
+            ]
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+  "database": "dynasties",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "dynasty_example",
+      "name": "Example Dynasty",
+      "founded_year": 1000,
+      "extinction_year": null,
+      "realm_ids": [],
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}

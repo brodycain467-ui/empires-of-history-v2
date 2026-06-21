@@ -1,0 +1,24 @@
+{
+  "database": "companies",
+  "schema_version": 1,
+  "minimum_engine_version": "0.4.95",
+  "last_updated": "2026-06-21",
+  "record_count": 1,
+  "records": [
+    {
+      "id": "company_example",
+      "name": "Example Company",
+      "industry_id": null,
+      "headquarters_province_id": null,
+      "founded_year": 1900,
+      "metadata": {},
+      "sources": [
+        "Primary source"
+      ],
+      "confidence": "Verified",
+      "verified": true,
+      "notes": "",
+      "future_extensions": {}
+    }
+  ]
+}
