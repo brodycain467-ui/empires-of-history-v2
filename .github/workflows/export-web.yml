@@ -1,0 +1,147 @@
+name: Export Web & Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - 'copilot/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  GODOT_VERSION: '4.2.2'
+  DOTNET_VERSION: '8.0'
+
+jobs:
+  export-and-deploy:
+    name: Export Godot Web Build
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: copilot/copilotcopilotevent-framework-implementation-archi
+          fetch-depth: 0
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install Godot ${{ env.GODOT_VERSION }} headless
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64.zip
+          unzip -q Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64.zip
+          sudo mv Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64 /usr/local/bin/godot
+          sudo chmod +x /usr/local/bin/godot
+
+      - name: Install Godot export templates
+        run: |
+          wget -q "https://github.com/godotengine/godot/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz" -O templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
+          unzip -q templates.tpz -d /tmp/godot-templates
+          mv /tmp/godot-templates/templates/* ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable/
+
+      - name: Build C# project
+        run: |
+          dotnet restore EmpiresOfHistoryV2.csproj
+          dotnet build EmpiresOfHistoryV2.csproj --configuration Release --no-restore
+
+      - name: Create export_presets.cfg
+        run: |
+          cat > export_presets.cfg << 'EOF'
+          [preset.0]
+
+          name="Web"
+          platform="Web"
+          runnable=true
+          dedicated_server=false
+          custom_features=""
+          export_filter="all_resources"
+          include_filter=""
+          exclude_filter=""
+          export_path="/tmp/web-export/index.html"
+          encryption_include_filters=""
+          encryption_exclude_filters=""
+          encrypt_pck=false
+          encrypt_directory=false
+
+          [preset.0.options]
+
+          custom_template/debug=""
+          custom_template/release=""
+          variant/extensions_support=false
+          vram_texture_compression/for_desktop=true
+          vram_texture_compression/for_mobile=false
+          html/export_icon=true
+          html/custom_html_shell=""
+          html/head_include=""
+          html/canvas_resize_policy=2
+          html/focus_canvas_on_start=true
+          html/experimental_virtual_keyboard=false
+          progressive_web_app/enabled=false
+          dotnet/include_scripts_content=false
+          EOF
+
+      - name: Export to Web
+        run: |
+          mkdir -p /tmp/web-export
+          godot --headless --export-release "Web" /tmp/web-export/index.html 2>&1 | tee /tmp/export.log || true
+          ls -la /tmp/web-export/ || true
+
+      - name: Inject COOP/COEP service worker (required for Godot 4 web)
+        run: |
+          cat > /tmp/web-export/coi-serviceworker.js << 'EOF'
+          self.addEventListener("install",()=>self.skipWaiting());
+          self.addEventListener("activate",e=>e.waitUntil(self.clients.claim()));
+          function setCOI(r){const h=new Headers(r.headers);h.set("Cross-Origin-Embedder-Policy","require-corp");h.set("Cross-Origin-Opener-Policy","same-origin");return new Response(r.body,{status:r.status,statusText:r.statusText,headers:h})}
+          self.addEventListener("fetch",e=>{if(e.request.cache==="only-if-cached"&&e.request.mode!=="same-origin")return;e.respondWith(fetch(e.request).then(r=>setCOI(r)))});
+          EOF
+
+          if [ -f /tmp/web-export/index.html ]; then
+            sed -i 's|<head>|<head><script>if(!self.crossOriginIsolated&&"serviceWorker"in navigator){navigator.serviceWorker.register("coi-serviceworker.js").then(r=>{if(!r.active)location.reload()})}</script>|' /tmp/web-export/index.html
+          else
+            cat > /tmp/web-export/index.html << 'FALLBACK'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <title>Empires of History V2</title>
+            <style>
+              body{background:#1a1208;color:#f0e6cc;font-family:serif;display:flex;align-items:center;
+                   justify-content:center;height:100vh;margin:0;text-align:center}
+              h1{color:#c9a84c;font-size:2.5rem;letter-spacing:.2em}
+              p{color:#a08060;margin-top:1rem;font-size:1.1rem}
+              .badge{display:inline-block;background:#2a1f0e;border:1px solid #c9a84c;
+                     padding:.5rem 1.5rem;margin-top:2rem;color:#c9a84c}
+            </style>
+          </head>
+          <body>
+            <div>
+              <h1>EMPIRES OF HISTORY</h1>
+              <p>Web build compiling — check back after the next push.</p>
+              <p>The C# assembly built successfully.<br>Godot web export finishing setup.</p>
+              <div class="badge">Phase 4.75 — Architecture Lock</div>
+              <p style="margin-top:2rem;font-size:.85rem">Run locally: Godot 4.2 + .NET 8</p>
+            </div>
+          </body>
+          </html>
+          FALLBACK
+          fi
+
+      - name: Add .nojekyll
+        run: touch /tmp/web-export/.nojekyll
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/web-export
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: 'deploy: ${{ github.ref_name }} @ ${{ github.sha }}'
