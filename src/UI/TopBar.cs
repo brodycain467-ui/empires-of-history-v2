@@ -44,8 +44,10 @@ public partial class TopBar : PanelContainer
         _resourceLabel.Text = $"Treasury: {treasury}  |  Population: {population}";
     }
 
+    // SetDateTurn is superseded by TurnControls.Refresh() — kept for API compatibility
     public void SetDateTurn(string date, int turn)
     {
+        // No-op: TurnControls.Refresh() handles date display directly
     }
 
     public void AttachRightControl(Control control)
