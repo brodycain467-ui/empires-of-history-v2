@@ -23,10 +23,10 @@ namespace EmpiresOfHistory.Tests
     /// </summary>
     public class Phase1ValidationTests
     {
-        private DateSystem _dateSystem;
-        private TurnManager _turnManager;
-        private SaveManager _saveManager;
-        private SaveData _testSaveData;
+        private DateSystem _dateSystem = null!;
+        private TurnManager _turnManager = null!;
+        private SaveManager _saveManager = null!;
+        private SaveData _testSaveData = null!;
 
         public Phase1ValidationTests()
         {

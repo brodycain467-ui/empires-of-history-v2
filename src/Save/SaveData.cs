@@ -11,10 +11,10 @@ namespace EmpiresOfHistory.Save
     /// </summary>
     public class SaveData
     {
-        public string SaveName { get; set; }
-        public string SaveId { get; set; }
+        public string SaveName { get; set; } = string.Empty;
+        public string SaveId { get; set; } = string.Empty;
         public DateTime SaveTime { get; set; }
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
         
         // Game state
         public int CurrentTurn { get; set; }
@@ -23,7 +23,7 @@ namespace EmpiresOfHistory.Save
         public int TurnLengthMonths { get; set; }
         
         // Gameplay state
-        public string PlayerNationId { get; set; }
+        public string PlayerNationId { get; set; } = string.Empty;
         public GameDifficulty Difficulty { get; set; }
         public Dictionary<string, int> PlayerStats { get; set; }
         
@@ -54,11 +54,11 @@ namespace EmpiresOfHistory.Save
 
     public class OwnershipRecord
     {
-        public string ProvinceId { get; set; }
-        public string NationId { get; set; }
+        public string ProvinceId { get; set; } = string.Empty;
+        public string NationId { get; set; } = string.Empty;
         public int StartYear { get; set; }
         public int? EndYear { get; set; }
-        public string Reason { get; set; }
+        public string Reason { get; set; } = string.Empty;
     }
 
     public enum GameDifficulty

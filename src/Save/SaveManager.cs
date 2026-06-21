@@ -22,12 +22,12 @@ namespace EmpiresOfHistory.Save
 
     public class SaveInfo
     {
-        public string SaveId { get; set; }
-        public string SaveName { get; set; }
+        public string SaveId { get; set; } = string.Empty;
+        public string SaveName { get; set; } = string.Empty;
         public DateTime SaveTime { get; set; }
         public int Turn { get; set; }
         public int Year { get; set; }
-        public string PlayerNation { get; set; }
+        public string PlayerNation { get; set; } = string.Empty;
         public long FileSizeBytes { get; set; }
     }
 
@@ -94,7 +94,8 @@ namespace EmpiresOfHistory.Save
                 }
                 
                 string json = await File.ReadAllTextAsync(filePath);
-                SaveData saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions);
+                SaveData saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions)
+                    ?? throw new InvalidOperationException($"Failed to deserialize save file: {saveId}");
                 
                 Console.WriteLine($"Game loaded: {saveData.SaveName}");
                 return saveData;
@@ -147,7 +148,8 @@ namespace EmpiresOfHistory.Save
                     try
                     {
                         string json = await File.ReadAllTextAsync(filePath);
-                        SaveData saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions);
+                        SaveData? saveData = JsonSerializer.Deserialize<SaveData>(json, _jsonOptions);
+                        if (saveData is null) continue;
                         
                         var info = new SaveInfo
                         {
